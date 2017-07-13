@@ -1,4 +1,4 @@
-#!/bin/bash
+##!/bin/bash
 
 # ffmpeg titel and comment change script
 #########################################################################################
@@ -18,7 +18,8 @@
 if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
 if ! hash ffmpeg 2>/dev/null; then sudo apt-get install --yes ffmpeg ; fi
 
-
+#for file in *.mp4 *.mkv (Testen)
+# echo ${VALUE%.*}
 for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
@@ -31,10 +32,9 @@ do
     	#mp4Tag=$(basename "$pfadOhneExt") # Dateiname ohne MKV = Tag
    	#echo "$mp4Tag"
 	echo "$DirPath"
-	newtag=$DirPath	
+	newtag=${DirPath%.GER*}
 	ffmpeg -i $file -metadata title="$newtag" -metadata comment="$newtag" -y $file
 	echo $file korrigiert.
-	#mkvpropedit "$pfad" -s title="$mkvTag"  #edit command titel etc
   done
 done
 
