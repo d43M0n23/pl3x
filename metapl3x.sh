@@ -14,7 +14,12 @@
 #Title
 #Comment
 #############################################
-#tools install
+#Variablen
+owntag=core
+mp4tag=mp4
+mkvtag=mkv
+
+# Tools install
 if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
 if ! hash ffmpeg 2>/dev/null; then sudo apt-get install --yes ffmpeg ; fi
 
@@ -32,9 +37,11 @@ do
     	#mp4Tag=$(basename "$pfadOhneExt") # Dateiname ohne MKV = Tag
    	#echo "$mp4Tag"
 	echo "$DirPath"
-	newtag=${DirPath%.GER*}
-	ffmpeg -i $file -metadata title="$newtag" -metadata comment="$newtag" -y $file
+	newtag=${DirPath%.XXX*}
+	newfile=${file%.*}
+	ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
 	echo $file korrigiert.
+	#echo $newfile
   done
 done
 
