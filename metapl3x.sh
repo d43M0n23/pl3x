@@ -33,7 +33,8 @@ do
 	DirPath=$pfad
 	DirPath="$(dirname $DirPath)"
 	DirPath="$(basename $DirPath)"
-    	#pfadOhneExt=${pfad%.*} # kpl. Pfad ohne Extension
+    	DirPath="$(basename "$PWD")"
+	#pfadOhneExt=${pfad%.*} # kpl. Pfad ohne Extension
     	#mp4Tag=$(basename "$pfadOhneExt") # Dateiname ohne MKV = Tag
    	#echo "$mp4Tag"
 	echo "$DirPath"
