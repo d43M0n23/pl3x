@@ -1,10 +1,17 @@
 #!/bin/bash
 
+######################################################################
 # c0r3mp3.sh
 # Converts to mp3 anything mplayer can play
 # Needs mplayer amd lame installed
 # apt-get install mplayer lame
 # command: > c0r3mp3.sh file.mp4 another-file.wma yet-another.file.ogg
+######################################################################
+
+######################################################################
+# last modify: 04.07.2017
+# bug or anything: d43M0n23@3xpl0it.com
+######################################################################
 
 [ $1 ] || { echo "Usage: $0 file1.wma file2.wma"; exit 1; }
 
