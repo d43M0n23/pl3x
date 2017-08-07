@@ -26,7 +26,7 @@ for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
   do
-	newfile=${file%core.*}
+	newfile=${file%_core.*}
 #        newfile=${file%.*}
 	mv $file ${newfile}.${mp4tag}
 #        ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
