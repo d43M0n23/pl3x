@@ -1,3 +1,7 @@
+#!/bin/bash
+
+#meta-testing.sh
+######################################################################
 ##!/bin/bash
 
 ###################################################################################
@@ -37,15 +41,21 @@ do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
   do
     pfad=$(readlink -f "$file") # kpl. Pfad
-	DirPath=$pfad
-	DirPath="$(dirname $DirPath)"
-	DirPath="$(basename $DirPath)"
-   	echo "$DirPath"
-	newtag=${DirPath%.XXX*}
-	newfile=${file%.*}
-	ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
-	echo $file korrigiert.
-	rm $file
+        DirPath=$pfad
+        DirPath="$(dirname $DirPath)"
+        DirPath="$(basename $DirPath)"
+        echo "$DirPath"
+        newtag=${DirPath%.XXX*}
+        newfile=${file%.*}
+        ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
+        echo $file korrigiert.
+        rm $file
   done
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+	newfile=${file%_core.*}
+	mv $file ${newfile}.${mp4tag}
+        echo $file verschoben.
+   done
 done
 
