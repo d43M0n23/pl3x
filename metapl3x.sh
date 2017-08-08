@@ -2,7 +2,7 @@
 
 ###################################################################################
 # metapl3x.sh
-# ffmpeg titel and comment change script
+# ffmpeg titel and comment metadata change script
 ###################################################################################
 # script read all mp4 files and change title and comment metadata
 # like remove "RARBG.COM - titel.mp4"
@@ -16,11 +16,6 @@
 # bug or anything: d43M0n23@3xpl0it.com
 ###################################################################################
 
-###################################################################################
-#METADATA:
-#Title
-#Comment
-###################################################################################
 #Variablen
 owntag=core
 mp4tag=mp4
@@ -47,5 +42,11 @@ do
 	echo $file korrigiert.
 	rm $file
   done
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+        newfile=${file%_core.*}
+        mv $file ${newfile}.${mp4tag}
+        echo $file verschoben.
+   done
 done
 
