@@ -42,11 +42,11 @@ do
 	echo $file korrigiert.
 	rm $file
   done
-#  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
-#  do
-#        newfile=${file%_core.*}
-#        mv $file ${newfile}.${mp4tag}
-#        echo $file verschoben.
-#   done
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+        newfile=${file%_core.*}
+        mv $file ${newfile}.${mp4tag}
+        echo $file verschoben.
+   done
 done
 
