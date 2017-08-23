@@ -40,6 +40,7 @@ do
 	newfile=${file%.*}
 	ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
 	echo $file korrigiert.
+	cp $file ${file}.bka # Absicherung
 	rm $file
   done
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
