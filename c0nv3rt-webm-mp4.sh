@@ -13,5 +13,15 @@
 # fab_130628_0554_core.mp4
 # can to: cut -f 1 -d '_'
 ######################################################################
-#Variablen
+# Global Command:
+# ffmpeg [global options] [input file options] -i input-file-name [output options] output-file-name
+# Variablen
 
+
+
+#mp4 2 webm
+#ffmpeg -i input-file.mp4 -c:v libvpx -crf 10 -b:v 1M -c:a libvorbis output-file.webm
+
+
+#webm 2 mp4
+ffmpeg -fflags +genpts -i $0 -r 24 $1
