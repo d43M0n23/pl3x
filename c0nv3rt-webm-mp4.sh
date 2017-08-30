@@ -24,4 +24,7 @@
 
 
 #webm 2 mp4
-ffmpeg -fflags +genpts -i $0 -r 24 $1
+#ffmpeg -fflags +genpts -i $0 -r 24 $1
+
+
+avconv -i $0 -c:v libx264  -crf 20 -c:a acc -strict experimental $1
