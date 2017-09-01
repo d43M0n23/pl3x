@@ -19,9 +19,6 @@ DESTINATION=/home/infinity/03-Adult/Movies/
 # Logfile
 LOG="cover.log"
 
-# Cover
-COVER=cover.jpg
-
 # Tools install
 #if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
 
@@ -44,10 +41,11 @@ do
 	DirPath=$pfad
 #	echo "$DirPath"
 	DirPath="$(dirname $DirPath)"
-	if [ ! -f ${DirPath}/${COVER} ]; then
+	if [ ! -f cover.jpg ]; then
         echo "$DirPath"
 	echo "$DirPath" >> $LOG
 	fi
   done
 done
+
 
