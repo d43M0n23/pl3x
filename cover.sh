@@ -10,10 +10,22 @@
 # bug or anything: d43M0n23@3xpl0it.com
 ###################################################################################
 
-#Variablen
-owntag=core
-mp4tag=mp4
-mkvtag=mkv
+##Variablen
+DATE=$(date +%F)
+
+# Local Destination
+DESTINATION=/home/infinity/03-Adult/Movies/
+
+# Logfile
+LOG="cover.log"
+
+# Tools install
+#if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
+
+# Log & bka-dir check
+if [ ! -f $LOG ]; then touch $LOG; fi
+#if [ ! -d $DESTINATION ]; then mkdir $DESTINATION; fi
+
 
 # Tools install
 #if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
@@ -27,23 +39,12 @@ do
   do
    pfad=$(readlink -f "$file") # kpl. Pfad
 	DirPath=$pfad
-	echo "$DirPath"
+#	echo "$DirPath"
 	DirPath="$(dirname $DirPath)"
-	echo "$DirPath"
-	DirPath="$(basename $DirPath)"
-   	echo "$DirPath"
-#	newtag=${DirPath%.XXX*}
-#	newfile=${file%.*}
-#	ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
-#	echo $file korrigiert.
-#	cp $file ${file}.bka # Absicherung
-#	rm $file
+	if [ ! -f cover.jpg ]; then
+        echo "$DirPath"
+	echo "$DirPath" >> $LOG
+	fi
   done
-#  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
-#  do
-#        newfile=${file%_core.*}
-#        mv $file ${newfile}.${mp4tag}
-#        echo $file verschoben.
-#   done
 done
 
