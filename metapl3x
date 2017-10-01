@@ -15,15 +15,89 @@
 # last modify: 04.07.2017
 # bug or anything: d43M0n23@3xpl0it.com
 ###################################################################################
+version=v1.0
+vdate=27.09.2017
 
 #Variablen
 owntag=core
 mp4tag=mp4
 mkvtag=mkv
 
+## Funktion
+
+# Local Destination
+INSTALL_DIR=/usr/share/metapl3x
+
+#Latest release
+LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/d43M0n23/pl3x/releases/latest)
+LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+
+
+#INSTALL
+
+if [ ! -d $INSTALL_DIR ]; then
+echo -e "\n${green} + -- --=[This is your first run of the metapl3x ${clear}"
+echo -e "${green} + -- --=[This script will install metapl3x under $INSTALL_DIR.${clear}"
+echo -e "${green} + -- --=[After install you can use the command 'metapl3x' Server/System wide and remove the downloaded git folder${clear}"
+
+sleep 2
+mkdir -p $INSTALL_DIR 2> /dev/null
+cp -Rf $PWD/* $INSTALL_DIR 2> /dev/null
+rm -f /usr/bin/metapl3x
+ln -s $INSTALL_DIR/metapl3x /usr/bin/metapl3x
+echo -e "${green} + -- --=[Installation Finish.${clear}"
+sleep 2
+fi
+
+
+
+#UPDATE NEW VERSION
+
+if [ "$LATEST_VERSION" != "$version" ]; then
+echo -e "\n${red}Your Version of metapl3x is outdated!${clear}"
+echo -e "\n${green}Please use the update function: metapl3x --update!${clear}"
+sleep 5
+fi
+
+
+
+#UPDATE
+
+if [ "$1"  = "--update" ]; then
+echo -e "\n${turk}You have select the update Feature${clear}"
+sleep 2
+cd /tmp/
+git clone https://github.com/d43M0n23/pl3x.git
+cp -Rf corescript/* $INSTALL_DIR 2> /dev/null
+rm -f /usr/bin/metapl3x
+ln -s $INSTALL_DIR/metapl3x /usr/bin/metapl3x
+echo -e "\n${green}Update finish.Please restart metapl3x.${clear}"
+rm -r pl3x
+exit
+fi
+
+
+#UNINSTALL
+
+if [ "$1" = "--deinstall" ]; then
+echo -e "\n${turk}You have select the uninstall Feature${clear}"
+sleep 2
+rm -f /usr/bin/metapl3x
+cd /usr/share/
+rm -r metapl3x
+cd
+exit
+fi
+
+
 # Tools install
 if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
 if ! hash ffmpeg 2>/dev/null; then sudo apt-get install --yes ffmpeg ; fi
+
+#Intro
+echo -e "Version: ${version}"
+echo -e "Last Stable: ${LATEST_VERSION}"
+
 
 #for file in *.mp4 *.mkv (Testen)
 # echo ${VALUE%.*}
@@ -35,7 +109,7 @@ do
 	DirPath=$pfad
 	DirPath="$(dirname $DirPath)"
 	DirPath="$(basename $DirPath)"
-   	echo "$DirPath"
+	echo "$DirPath"
 	newtag=${DirPath%.XXX*}
 	newfile=${file%.*}
 	ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
