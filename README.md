@@ -7,15 +7,17 @@ bug or anything: d43M0n23@3xpl0it.com
 ## ABOUT.
 #metapl3x.sh
 metapl3x modify metadata on mp4 Files.
-copy metapl3x.sh in your MP4 directory & run
+copy metapl3x in your MP4 directory & run or use the option --install
 
-command:<pre><i><n>./metapl3x.sh</pre></i></n>
+command:<pre><i><n>./metapl3x or metapl3x</pre></i></n>
 
 #c0r3-c0nv3rt.sh
 c0r3-c0nv3rt convert mp4 like YT-files to any sound format like mp3,ogg,wav
 
 Converts to mp3 anything mplayer or VLC can play.
 Needs mplayer amd lame installed!.
+Directory h4ck5
+
 <pre><i><n>apt-get install mplayer lame</pre></i></n> 
 
 command:<pre><i><n>./c0r3-c0nv3rt.sh file.mp4 another-file.wma yet-another.file.ogg.sh</pre></i></n>
