@@ -35,7 +35,8 @@ command:<pre><i><n>./c0r3-c0nv3rt.sh file.mp4 another-file.wma yet-another.file.
 ## INSTALLATION
 Installation of scripts:
 <pre><i><n>git clone https://github.com/d43M0n23/pl3x.git
-</pre></i></n>
+cd pl3x
+./metapl3x</pre></i></n>
 
 that's it ,)    
 Have fun & n1c3 d4Y. 3xpl0it.com
