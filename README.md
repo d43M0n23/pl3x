@@ -38,5 +38,14 @@ Installation of scripts:
 cd pl3x
 ./metapl3x</pre></i></n>
 
+## UNINSTALL
+Uninstall of script:
+<pre><i><n>metapl3x --uninstall</pre></i></n>
+
+## CHECK META
+check metadata title from file
+<pre><i><n>metapl3x --check</pre></i></n>
+
+
 that's it ,)    
 Have fun & n1c3 d4Y. 3xpl0it.com

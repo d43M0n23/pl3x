@@ -60,7 +60,6 @@ sleep 5
 fi
 
 
-
 #UPDATE
 
 if [ "$1"  = "--update" ]; then
@@ -94,9 +93,35 @@ fi
 if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
 if ! hash ffmpeg 2>/dev/null; then sudo apt-get install --yes ffmpeg ; fi
 
+# CHECK-META
+if [ "$1" = "--check" ]; then
+
+#Variablen
+owntag=core
+mp4tag=mp4
+mkvtag=mkv
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+        exiftool $file | grep Title
+  done
+done
+fi
+
+
 #Intro
+echo -e "\n"
+echo -e "                __                .__  ________          "
+echo -e "  _____   _____/  |______  ______ |  | \_____  \___  ___ "
+echo -e " /     \_/ __ \   __\__  \ \____ \|  |   _(__  <\  \/  / "
+echo -e "|  Y Y  \  ___/|  |  / __ \|  |_> >  |__/       \>    <  "
+echo -e "|__|_|  /\___  >__| (____  /   __/|____/______  /__/\_ \ "
+echo -e "      \/     \/          \/|__|               \/      \/ "
+echo -e "\n"
 echo -e "Version: ${version}"
-echo -e "Last Stable: ${LATEST_VERSION}"
+echo -e "Last Stable: ${LATEST_VERSION}\n"
 
 
 #for file in *.mp4 *.mkv (Testen)
