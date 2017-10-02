@@ -108,6 +108,7 @@ do
         exiftool $file | grep Title
   done
 done
+break
 fi
 
 
