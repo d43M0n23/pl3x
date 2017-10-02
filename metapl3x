@@ -78,7 +78,7 @@ fi
 
 #UNINSTALL
 
-if [ "$1" = "--deinstall" ]; then
+if [ "$1" = "--uninstall" ]; then
 echo -e "\n${turk}You have select the uninstall Feature${clear}"
 sleep 2
 rm -f /usr/bin/metapl3x
