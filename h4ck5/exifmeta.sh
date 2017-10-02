@@ -1,13 +1,7 @@
 ##!/bin/bash
 
 ###################################################################################
-# metapl3x.sh
-# ffmpeg titel and comment metadata change script
-###################################################################################
-# script read all mp4 files and change title and comment metadata
-# like remove "RARBG.COM - titel.mp4"
-###################################################################################
-#ffmpeg -i inputfile -metadata title="Movie Title" -metadata year="2010" outputfile
+# exifmeta.sh
 #exiftool IMG_0014.MOV >a.txt
 #ffmpeg -i input_video -f ffmetadata metadata.txt
 #exiftool bumsbuero.16.09.30.ashley.cumstar.de.mp4 | grep Title

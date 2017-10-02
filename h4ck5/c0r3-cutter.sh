@@ -29,7 +29,6 @@ do
 	newfile=${file%_core.*}
 #        newfile=${file%.*}
 	mv $file ${newfile}.${mp4tag}
-#        ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
         echo $file korrigiert.
   done
 done

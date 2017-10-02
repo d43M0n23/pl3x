@@ -1,4 +1,4 @@
-##!/bin/bash
+#!/bin/bash
 
 ###################################################################################
 # cover.sh
@@ -22,19 +22,11 @@ LOG="cover.log"
 # Cover
 COVER=cover.jpg
 
-# Tools install
-#if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
-
 # Log & bka-dir check
 if [ ! -f $LOG ]; then touch $LOG; fi
 #if [ ! -d $DESTINATION ]; then mkdir $DESTINATION; fi
 
-
-# Tools install
-#if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
-#if ! hash ffmpeg 2>/dev/null; then sudo apt-get install --yes ffmpeg ; fi
-
-#for file in *.mp4 *.mkv (Testen)
+# for file in *.mp4 *.mkv (Testen)
 # echo ${VALUE%.*}
 for file in *;
 do
