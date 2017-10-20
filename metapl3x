@@ -16,6 +16,7 @@
 # bug or anything: d43M0n23@3xpl0it.com
 ###################################################################################
 # Bash sTyl3!
+clear='\033[0m'		#alle Attribute zurücksetzen
 red='\033[31m'          #Schriftfarbe rot
 green='\033[32m'        #Schriftfarbe grün
 yell='\033[33m'         #Schriftfarbe gelb
@@ -69,7 +70,7 @@ fi
 #UPDATE
 
 if [ "$1"  = "--update" ]; then
-echo -e "\n${turk}You have select the update Feature${clear}"
+echo -e "\n${yell}You have select the update Feature${clear}"
 sleep 2
 cd /tmp/
 git clone https://github.com/d43M0n23/pl3x.git
