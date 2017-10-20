@@ -117,7 +117,7 @@ done
 exit
 fi
 
-
+# REMOVE CORE STRING
 if [ "$1" = "--core" ]; then
 
 #Variablen
