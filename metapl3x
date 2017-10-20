@@ -22,7 +22,7 @@ yell='\033[33m'         #Schriftfarbe gelb
 
 #Version
 version=v1.0
-vdate=02.10.2017
+vdate=19.10.2017
 
 #Variablen
 owntag=core
@@ -112,6 +112,26 @@ do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
   do
         exiftool $file | grep Title
+  done
+done
+exit
+fi
+
+
+if [ "$1" = "--core" ]; then
+
+#Variablen
+owntag=core
+mp4tag=mp4
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp4$ | grep core | while read file
+  do
+#	newfile=${file%_core.*}
+#	mv $file ${newfile}.${mp4tag}
+#        echo $file korrigiert.
+	echo $file
   done
 done
 exit
