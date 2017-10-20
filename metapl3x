@@ -73,7 +73,7 @@ echo -e "\n${turk}You have select the update Feature${clear}"
 sleep 2
 cd /tmp/
 git clone https://github.com/d43M0n23/pl3x.git
-cp -Rf corescript/* $INSTALL_DIR 2> /dev/null
+cp -Rf pl3x/* $INSTALL_DIR 2> /dev/null
 rm -f /usr/bin/metapl3x
 ln -s $INSTALL_DIR/metapl3x /usr/bin/metapl3x
 echo -e "\n${green}Update finish.Please restart metapl3x.${clear}"
