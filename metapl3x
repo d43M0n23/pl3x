@@ -153,7 +153,15 @@ for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mkv$ | while read file
   do
-	ffmpeg -i $file -vn -acodec mp3 ${file}.${mp3tag}
+    pfad=$(readlink -f "$file") # kpl. Pfad
+        DirPath=$pfad
+        DirPath="$(dirname $DirPath)"
+        DirPath="$(basename $DirPath)"
+        echo "$DirPath"
+        newtag=${DirPath%.German*}
+        newfile=${file%.*}
+	# Extract MP3
+	ffmpeg -i $file -vn -acodec mp3 ${newfile}.${mp3tag}
         echo Aus $file Audio extrahiert.
   done
 done
