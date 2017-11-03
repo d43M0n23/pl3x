@@ -140,6 +140,27 @@ exit
 fi
 
 
+# Extract Audio from mkv
+if [ "$1" = "--mp3" ]; then
+
+#Variablen
+owntag=core
+mp4tag=mp4
+mkvtag=mkv
+mp3tag=mp3
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mkv$ | while read file
+  do
+	ffmpeg -i $file -vn -acodec mp3 ${file}.${mp3tag}
+        echo Aus $file Audio extrahiert.
+  done
+
+exit
+fi
+
+
 #Intro
 echo -e "\n"
 echo -e "                __                .__  ________          "
@@ -151,6 +172,7 @@ echo -e "      \/     \/          \/|__|               \/      \/ "
 echo -e "\n"
 echo -e "${yell}Version: ${version}${clear}"
 echo -e "${green}Last Stable: ${LATEST_VERSION}\n${clear}"
+echo -e "${yell}Optionen: --check, --core, --mp3${clear}"
 
 
 #for file in *.mp4 *.mkv (Testen)
