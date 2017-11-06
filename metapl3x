@@ -177,8 +177,7 @@ fi
 
 if [ "$1" = "--create" ]; then
 	echo "creating Folder in Source"
-	mkdir ${x3folder_1[*]};
-	mkdir $x3folder_2;
+	mkdir ${x3folder_1[*]} ${x3folder_2[*]} ${x3folder_3[*]} ${x3folder_4[*]} ${x3folder_5[*]};
 	exit;
 fi
 
