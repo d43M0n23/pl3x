@@ -32,6 +32,48 @@ owntag=core
 mp4tag=mp4
 mkvtag=mkv
 
+#Directorys
+x3folder=(1By-Day
+ATK
+BabyGotBoobs
+BigTitsAtWork
+BigTitsAtSchool
+BoldlyGirls
+BumsBesuch
+BumsBuero
+BurningAngel
+CherryPimps
+DDFBusty
+DeviantHardcore
+DigitalPlayground
+DorcelClub
+FootFetishDaily
+GirlsDoToys
+GirlsWay
+HarmonyVision
+HotAndMean
+HotLegsAndFeet
+HouseOfTaboo
+InTheCrack
+Killergram
+MilfsLikeItBig
+MomKnowsBest
+MommyGotBoobs
+MommysGirl
+Pantyhosed4U
+PornMegaLoad
+PornstarPlatinum
+PornStarsLikeItBig
+PureMature
+RKPrime
+ShareMyBF
+TeensLoveHugeCocks
+TeensLikeItBig
+TheRealWorkout
+TheLifeErotic
+VIPArea
+WildOnCam)
+
 ## Funktion
 
 # Local Destination
@@ -168,6 +210,11 @@ done
 exit
 fi
 
+if [ "$1" = "--create" ]; then
+	echo "creating Folder in Source"
+	mkdir $x3folder;
+	exit;
+fi
 
 #Intro
 echo -e "\n"
