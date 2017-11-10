@@ -131,7 +131,6 @@ fi
 if [ "$1" = "--core" ]; then
 
 #Variablen
-owntag=core
 mp4tag=mp4
 
 for file in *;
@@ -151,9 +150,6 @@ fi
 if [ "$1" = "--mp3" ]; then
 
 #Variablen
-owntag=core
-mp4tag=mp4
-mkvtag=mkv
 mp3tag=mp3
 
 for file in *;
@@ -174,8 +170,35 @@ do
 done
 exit
 fi
-#ffmpeg -i *.mp3 *.wav
 
+# convert mp3 to wav
+#ffmpeg -i *.mp3 *.wav
+if [ "$1" = "--wav" ]; then
+
+#Variablen
+mp3tag=mp3
+wavtag=wav
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp3$ | while read file
+  do
+    pfad=$(readlink -f "$file") # kpl. Pfad
+        DirPath=$pfad
+        DirPath="$(dirname $DirPath)"
+        DirPath="$(basename $DirPath)"
+        echo "$DirPath"
+        newtag=${DirPath%.German*}
+        newfile=${file%.*}
+        # Extract MP3
+        ffmpeg -i $file ${newfile}.${wavtag}
+        echo $file wurder in ${newfile}.${wavtag} konvertiert.
+  done
+done
+exit
+fi
+
+# create xxx-folder
 if [ "$1" = "--create" ]; then
 	echo "creating Folder in Source"
 	mkdir -p ${x3folder_1[*]} ${x3folder_2[*]} ${x3folder_3[*]} ${x3folder_4[*]} ${x3folder_5[*]};
