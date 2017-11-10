@@ -179,6 +179,7 @@ do
         	# Convert 2 WAV
         	ffmpeg -i $file ${newfile}.${wavtag}
         	echo $file wurder in ${newfile}.${wavtag} konvertiert.
+	fi
 done
 exit
 fi
