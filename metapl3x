@@ -158,7 +158,7 @@ mp3tag=mp3
 
 for file in *;
 do
-  find "$file" -type f -not -name ".*" | grep .mkv$ | while read file
+  find "$file" -type f -not -name ".*" | egrep '.mkv$|.mp4S' | while read file
   do
     pfad=$(readlink -f "$file") # kpl. Pfad
         DirPath=$pfad
