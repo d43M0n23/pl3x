@@ -167,6 +167,18 @@ do
 	ffmpeg -i $file -vn -acodec mp3 ${newfile}.${mp3tag}
         echo Aus $file Audio extrahiert.
   done
+	if [ "$2" = "--wav" ]; then
+	wavtag=wav
+    	pfad=$(readlink -f "$file") # kpl. Pfad
+        	DirPath=$pfad
+        	DirPath="$(dirname $DirPath)"
+        	DirPath="$(basename $DirPath)"
+        	echo "$DirPath"
+        	newtag=${DirPath%.German*}
+        	newfile=${file%.*}
+        	# Convert 2 WAV
+        	ffmpeg -i $file ${newfile}.${wavtag}
+        	echo $file wurder in ${newfile}.${wavtag} konvertiert.
 done
 exit
 fi
