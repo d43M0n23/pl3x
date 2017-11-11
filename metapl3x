@@ -273,7 +273,8 @@ echo -e "      \/     \/          \/|__|               \/      \/ "
 echo -e "\n"
 echo -e "${yell}Version: ${version}${clear}"
 echo -e "${green}Last Stable: ${LATEST_VERSION}${clear}"
-echo -e "${yell}Optionen: --check, --core, --mp3, --create\n${clear}"
+echo -e "${yell}Option: --check, --core, --mp3, --create\n${clear}"
+echo -e "${yell}Option: --wav, --rarbg, --mp3 --wav, --txt\n${clear}"
 
 
 #for file in *.mp4 *.mkv (Testen)
