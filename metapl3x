@@ -157,13 +157,15 @@ do
 	echo $file korrigiert.
 	cp $file ${file}.bka # Absicherung
 	rm $file
+	fi
   done
-  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
-  do
-        newfile=${file%_core.*}
-        mv $file ${newfile}.${mp4tag}
-        echo $file verschoben.
-  done
+
+#  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+#  do
+#        newfile=${file%_core.*}
+#        mv $file ${newfile}.${mp4tag}
+#        echo $file verschoben.
+#  done
 done
 exit
 fi
