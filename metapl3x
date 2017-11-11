@@ -131,6 +131,25 @@ done
 exit
 fi
 
+# CHECK-META & WORK meta
+if [ "$1" = "--rarbg" ]; then
+
+#Variablen
+owntag=core
+mp4tag=mp4
+mkvtag=mkv
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+        exiftool $file | grep Title | tee -a rarbg_title.log
+  done
+done
+exit
+fi
+
+
 # REMOVE CORE STRING
 if [ "$1" = "--core" ]; then
 
