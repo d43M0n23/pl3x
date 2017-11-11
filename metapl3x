@@ -143,25 +143,26 @@ for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
   do
+	echo $file
 	working_file=$(exiftool $file | grep Title | grep RARBG | tee -a rarbg_title.log)
 	pfad=$(readlink -f "$working_file") # kpl. Pfad
-	DirPath=$pfad
-	DirPath="$(dirname $DirPath)"
-	DirPath="$(basename $DirPath)"
-	echo "$DirPath"
-	newtag=${DirPath%.XXX*}
-	newfile=${working_file%.*}
-	ffmpeg -i $working_file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
+##	DirPath=$pfad
+##	DirPath="$(dirname $DirPath)"
+##	DirPath="$(basename $DirPath)"
+##	echo "$DirPath"
+##	newtag=${DirPath%.XXX*}
+##	newfile=${working_file%.*}
+##	ffmpeg -i $working_file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
 	echo $working_file korrigiert.
 #	cp $file ${file}.bka # Absicherung
-	rm $file
+##	rm $file
   done
-  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
-  do
-        newfile=${file%_core.*}
-        mv $file ${newfile}.${mp4tag}
-        echo $file verschoben.
-done
+#  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+#  do
+#        newfile=${file%_core.*}
+#        mv $file ${newfile}.${mp4tag}
+#        echo $file verschoben.
+#done
 done
 exit
 fi
