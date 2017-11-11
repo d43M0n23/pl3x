@@ -36,12 +36,12 @@ mp4tag=mp4
 mkvtag=mkv
 
 #Directorys
-x3folder_1=(1By.Day ArchAngel ATK/{ATKExotics,ATKGalleria,ATKHairy} BabyGotBoobs BangingBeauties BigTitsAtSchool BoldlyGirls Brazzer BrownBunnies BumsBesuch BurningAngel)
+x3folder_1=(1By.Day ArchAngel ATK/{ATKExotics,ATKGalleria,ATKHairy} Babes BabyGotBoobs BangingBeauties BigTitsAtSchool BoldlyGirls Brazzer BrownBunnies BumsBesuch BurningAngel)
 x3folder_2=(CherryPimps DDFBusty DeviantHardcore DigitalPlayground DorcelClub FuckingAwesome FootFetishDaily GirlsDoToys GirlsWay HardTied HarmonyVision HotAndMean HotLegsAndFeet HouseOfTaboo)
-x3folder_3=(InTheCrack Joymii Karups/{KarupsHA,KarupsOW,KarupsPC} Killergram KitanaLure)
+x3folder_3=(InTheCrack Joymii JeshByJesh JimSlip Karups/{KarupsHA,KarupsOW,KarupsPC} Killergram KitanaLure)
 x3folder_4=(Kink.com/{Kink.ElectroSluts,Kink.EverythingButt,Kink.FuckingMachines,Kink.Hog.Tied,Kink.PublicDisgrace,Kink.SexAndSubmission,Kink.TheTrainingofO,Kink.TheUpperFloor,Kink.WhippedAss})
-x3folder_5=(MeganRain MilfHunter MilfsLikeItBig MommyGotBoobs MomXXX NFBusty Nubiles Pantyhosed4U PornMegaLoad PornstarPlatinum RKPrime RoundAndBrown)
-x3folder_6=(ScrewBox SexualDisgrace SexuallyBroken ShareMyBF SinsLife Spizoo TeensLoveHugeCocks VivThomas WildOnCam)
+x3folder_5=(MeganRain MilfHunter MilfsLikeItBig MommyGotBoobs MomXXX NewSensations NFBusty Nubiles Pantyhosed4U PornMegaLoad PornstarPlatinum RKPrime RoundAndBrown)
+x3folder_6=(ScrewBox SexualDisgrace SexuallyBroken ShareMyBF SinsLife Spizoo TeensLoveHugeCocks TheRealWorkout VivThomas WildOnCam)
 
 ## Funktion
 
@@ -145,24 +145,25 @@ do
   do
 	echo $file
 	working_file=$(exiftool $file | grep Title | grep RARBG | tee -a rarbg_title.log)
-	pfad=$(readlink -f "$working_file") # kpl. Pfad
-##	DirPath=$pfad
-##	DirPath="$(dirname $DirPath)"
-##	DirPath="$(basename $DirPath)"
-##	echo "$DirPath"
-##	newtag=${DirPath%.XXX*}
-##	newfile=${working_file%.*}
-##	ffmpeg -i $working_file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
-	echo $working_file korrigiert.
-#	cp $file ${file}.bka # Absicherung
-##	rm $file
+	if working_file ; then
+	pfad=$(readlink -f "$file") # kpl. Pfad
+	DirPath=$pfad
+	DirPath="$(dirname $DirPath)"
+	DirPath="$(basename $DirPath)"
+	echo "$DirPath"
+	newtag=${DirPath%.XXX*}
+	newfile=${file%.*}
+	ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
+	echo $file korrigiert.
+	cp $file ${file}.bka # Absicherung
+	rm $file
   done
-#  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
-#  do
-#        newfile=${file%_core.*}
-#        mv $file ${newfile}.${mp4tag}
-#        echo $file verschoben.
-#done
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+        newfile=${file%_core.*}
+        mv $file ${newfile}.${mp4tag}
+        echo $file verschoben.
+  done
 done
 exit
 fi
