@@ -13,8 +13,11 @@
 #exiftool IMG_0014.MOV >a.txt
 #ffmpeg -i input_video -f ffmetadata metadata.txt
 #exiftool bumsbuero.16.09.30.ashley.cumstar.de.mp4 | grep Title
+# TODO:
+# --rarbg: suche der files mit grep title, remove von rarbg.txt + sample ordner.
+# -f $2: bezogen auf title
 ###################################################################################
-# last modify: 04.07.2017
+# last modify: 11.11.2017
 # bug or anything: d43M0n23@3xpl0it.com
 ###################################################################################
 # Bash sTyl3!
@@ -25,7 +28,7 @@ yell='\033[33m'         #Schriftfarbe gelb
 
 #Version
 version=v1.0
-vdate=06.11.2017
+vdate=11.11.2017
 
 #Variablen
 owntag=core
@@ -37,7 +40,8 @@ x3folder_1=(1By.Day ArchAngel ATK/{ATKExotics,ATKGalleria,ATKHairy} BabyGotBoobs
 x3folder_2=(CherryPimps DDFBusty DeviantHardcore DigitalPlayground DorcelClub FuckingAwesome FootFetishDaily GirlsDoToys GirlsWay HardTied HarmonyVision HotAndMean HotLegsAndFeet HouseOfTaboo)
 x3folder_3=(InTheCrack Joymii Karups/{KarupsHA,KarupsOW,KarupsPC} Killergram KitanaLure)
 x3folder_4=(Kink.com/{Kink.ElectroSluts,Kink.EverythingButt,Kink.FuckingMachines,Kink.Hog.Tied,Kink.PublicDisgrace,Kink.SexAndSubmission,Kink.TheTrainingofO,Kink.TheUpperFloor,Kink.WhippedAss})
-x3folder_5=(MeganRain MilfHunter MilfsLikeItBig MommyGotBoobs MomXXX NFBusty Nubiles Pantyhosed4U PornMegaLoad PornstarPlatinum RKPrime RoundAndBrown ScrewBox SexualDisgrace SexuallyBroken ShareMyBF SinsLife Spizoo TeensLoveHugeCocks VivThomas WildOnCam)
+x3folder_5=(MeganRain MilfHunter MilfsLikeItBig MommyGotBoobs MomXXX NFBusty Nubiles Pantyhosed4U PornMegaLoad PornstarPlatinum RKPrime RoundAndBrown)
+x3folder_6=(ScrewBox SexualDisgrace SexuallyBroken ShareMyBF SinsLife Spizoo TeensLoveHugeCocks VivThomas WildOnCam)
 
 ## Funktion
 
@@ -214,7 +218,7 @@ fi
 # create xxx-folder
 if [ "$1" = "--create" ]; then
 	echo "creating Folder in Source"
-	mkdir -p ${x3folder_1[*]} ${x3folder_2[*]} ${x3folder_3[*]} ${x3folder_4[*]} ${x3folder_5[*]};
+	mkdir -p ${x3folder_1[*]} ${x3folder_2[*]} ${x3folder_3[*]} ${x3folder_4[*]} ${x3folder_5[*]} ${x3folder_6[*]};
 	exit;
 fi
 
