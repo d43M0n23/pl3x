@@ -143,7 +143,7 @@ for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
   do
-        exiftool $file | grep Title | tee -a rarbg_title.log
+        exiftool $file | grep Title | grep RARBG | tee -a rarbg_title.log
   done
 done
 exit
