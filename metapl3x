@@ -222,7 +222,7 @@ if [ "$1" = "--sample" ]; then
 
 for file in *;
 do
-  find "$file" -type d -not -name "*" | grep Sample | while read file
+  find "$file" -type d -name "Sample" | while read file
   do
 	pfad=$(readlink -f "$file")
 #        newfile=${file%_core.*}
