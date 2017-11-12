@@ -230,21 +230,21 @@ do
         DirPath=$pfad
         DirPath="$(dirname $DirPath)"
         DirPath="$(basename $DirPath)"
-        echo "$DirPath"
+        echo -e "${green}Fileordner:${yell} ${DirPath}${clear}"
         #mainfolder section
 	mainfolder=${DirPath%%.*}
-	echo "Mainfolder: ${mainfolder}"
+	echo -e "${green}Mainfolder:${yell} ${mainfolder}${clear}"
 	#file metapart
         newtag=${DirPath%.XXX*}
         newfile=${file%.*}
         ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
-        echo $file korrigiert.
+        echo -e "\n${green}${file} korrigiert.${clear}"
 	#cp $file ${file}.bka # Absicherung
         rm $file
 	#remove coreTag in filename
         topfile=${newfile}.${mp4tag}
         mv ${newfile}_${owntag}.${mp4tag} ${topfile}.${mp4tag}
-        echo $newfile_${owntag}.${mp4tag} verschoben zu $topfile.
+        echo ${newfile}_${owntag}.${mp4tag} verschoben zu $topfile.
 	#move sub 2 main folder
 	mv $DirPath $mainfolder/
 	echo $DirPath in den $mainfolder verschoben.
