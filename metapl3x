@@ -116,11 +116,6 @@ if ! hash ffmpeg 2>/dev/null; then sudo apt-get install --yes ffmpeg ; fi
 # CHECK-META
 if [ "$1" = "--check" ]; then
 
-#Variablen
-owntag=core
-mp4tag=mp4
-mkvtag=mkv
-
 for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
@@ -134,11 +129,6 @@ fi
 
 # CHECK-META
 if [ "$1" = "--merge" ]; then
-
-#Variablen
-#owntag=core
-#mp4tag=mp4
-#mkvtag=mkv
 
 for file in *;
 do
@@ -160,11 +150,6 @@ fi
 
 # CHECK-META & WORK meta
 if [ "$1" = "--rarbg" ]; then
-
-#Variablen
-owntag=core
-mp4tag=mp4
-mkvtag=mkv
 
 for file in *;
 do
@@ -201,15 +186,28 @@ fi
 # REMOVE CORE STRING
 if [ "$1" = "--core" ]; then
 
-#Variablen
-mp4tag=mp4
-
 for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | grep core | while read file
   do
 	newfile=${file%_core.*}
 	mv $file ${newfile}.${mp4tag}
+        echo $file korrigiert.
+  done
+done
+exit
+fi
+
+# REMOVE CORE STRING
+if [ "$1" = "--txt" ]; then
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .txt$ | grep RARBG | while read file
+  do
+
+        newfile=${file%_core.*}
+        mv $file ${newfile}.${mp4tag}
         echo $file korrigiert.
   done
 done
@@ -256,11 +254,10 @@ exit
 fi
 
 # convert mp3 to wav
-#ffmpeg -i *.mp3 *.wav
+# ffmpeg -i *.mp3 *.wav
 if [ "$1" = "--wav" ]; then
 
 #Variablen
-mp3tag=mp3
 wavtag=wav
 
 for file in *;
@@ -288,6 +285,13 @@ if [ "$1" = "--create" ]; then
 	mkdir -p ${x3folder_1[*]} ${x3folder_2[*]} ${x3folder_3[*]} ${x3folder_4[*]} ${x3folder_5[*]} ${x3folder_6[*]};
 	exit;
 fi
+
+# move sync to sitetip
+if [ "$1" = "--siterip" ]; then
+        echo "Moving Files to Siterip"
+        exit;
+fi
+
 
 #Intro
 echo -e "\n"
