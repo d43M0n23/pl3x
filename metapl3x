@@ -190,11 +190,38 @@ done
 exit
 fi
 
-
+#-----------
+# ELITE PART
+#-----------
 if [ "$1" = "--elite" ]; then
 # for file in *.mp4 *.mkv (Testen)
 # echo ${VALUE%.*}
+# Remove TXT and Samples Dir first.
+elitelog=metapl3x_elite.txt
+# rm txt
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .txt$ | grep RARBG | while read file
+  do
+        echo $file >> remove_txt.log
+        echo $file gefunden. - REMOVE
+        rm $file
+  done
+done
 
+# rm samples
+for file in *;
+do
+  find "$file" -type d -name "Sample" | while read file
+  do
+        pfad=$(readlink -f "$file")
+        echo $file >> remove_sample.log
+        echo $file gefunden. - REMOVE
+        rm -r $file
+  done
+done
+
+# main
 for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
@@ -204,21 +231,24 @@ do
         DirPath="$(dirname $DirPath)"
         DirPath="$(basename $DirPath)"
         echo "$DirPath"
+        #mainfolder section
 	mainfolder=${DirPath%%.*}
 	echo "Mainfolder: ${mainfolder}"
+	#file metapart
         newtag=${DirPath%.XXX*}
         newfile=${file%.*}
-#        ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
+        ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
         echo $file korrigiert.
-#       cp $file ${file}.bka # Absicherung
-#        rm $file
+	#cp $file ${file}.bka # Absicherung
+        rm $file
+	#remove coreTag in filename
+        topfile=${newfile%_core.*}
+        mv $newfile ${topfile}.${mp4tag}
+        echo $newfile verschoben zu $topfile.
+	#move sub 2 main folder
+	mv $DirPath $mainfolder/
+	echo $DirPath in den $mainfolder verschoben.
   done
-#  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
-#  do
-#        newfile=${file%_core.*}
-#        mv $file ${newfile}.${mp4tag}
-#        echo $file verschoben.
-#   done
 done
 exit
 fi
