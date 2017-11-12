@@ -242,16 +242,16 @@ do
 	#cp $file ${file}.bka # Absicherung
         rm $file
 	#remove coreTag in filename
-        topfile=${newfile%_core.*}
-        mv $newfile ${topfile}.${mp4tag}
-        echo $newfile verschoben zu $topfile.
+        topfile=${newfile}.${mp4tag}
+        mv ${newfile}_${owntag}.${mp4tag} ${topfile}.${mp4tag}
+        echo $newfile_${owntag}.${mp4tag} verschoben zu $topfile.
 	#move sub 2 main folder
 	mv $DirPath $mainfolder/
 	echo $DirPath in den $mainfolder verschoben.
   done
+done
 cat remove_txt.log >> $elitelog
 cat remove_sample.log >> $elitelog
-done
 exit
 fi
 
