@@ -249,6 +249,8 @@ do
 	mv $DirPath $mainfolder/
 	echo $DirPath in den $mainfolder verschoben.
   done
+cat remove_txt.log >> $elitelog
+cat remove_sample.log >> $elitelog
 done
 exit
 fi
