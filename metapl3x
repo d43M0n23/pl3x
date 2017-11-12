@@ -152,7 +152,8 @@ do
   done
 done
         #merge
-        ffmpeg -f concat -i input.txt -codec copy ${DirPath}.mp4
+     #   ffmpeg -f concat -safe 0 -i input.txt -codec copy ${DirPath}.mp4
+	ffmpeg -f concat -safe 0 -i input.txt -codec copy test.mp4
         rm input.txt
 exit
 fi
