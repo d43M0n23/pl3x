@@ -145,12 +145,7 @@ do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
   do
         pfad=$(readlink -f "$file") # kpl. Pfad
-	echo $pfad
-	DirPath=$pfad
-        DirPath="$(dirname $DirPath)"
-	echo $DirPath
-        DirPath="$(basename $DirPath)"
-        echo "$DirPath"
+	echo "file '${pfad}'" > input.txt 
 	#merge
 	#ffmpeg -f concat -i input.txt -codec copy output.mp4
   done
