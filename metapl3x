@@ -208,10 +208,9 @@ for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .txt$ | grep RARBG | while read file
   do
-
-        newfile=${file%_core.*}
-        mv $file ${newfile}.${mp4tag}
-        echo $file korrigiert.
+	echo $file > remove_sample.log
+	echo $file gefunden. - REMOVE
+	rm $file
   done
 done
 exit
@@ -225,9 +224,9 @@ do
   find "$file" -type d -name "Sample" | while read file
   do
 	pfad=$(readlink -f "$file")
-#        newfile=${file%_core.*}
-#        mv $file ${newfile}.${mp4tag}
-        echo $file gefunden $pfad .
+	echo $file > remove_sample.log
+        echo $file gefunden. - REMOVE
+	rm -r $file
   done
 done
 exit
