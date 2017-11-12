@@ -247,7 +247,7 @@ do
         rm $file
 	#remove coreTag in filename
         topfile=${newfile}.${mp4tag}
-        mv ${newfile}_${owntag}.${mp4tag} ${topfile}.${mp4tag}
+        mv ${newfile}_${owntag}.${mp4tag} ${topfile}
         echo ${newfile}_${owntag}.${mp4tag} verschoben zu $topfile.
 	#move sub 2 main folder
 	if [ ! -d $mainfolder ]; then
