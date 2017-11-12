@@ -250,7 +250,10 @@ do
         mv ${newfile}_${owntag}.${mp4tag} ${topfile}.${mp4tag}
         echo ${newfile}_${owntag}.${mp4tag} verschoben zu $topfile.
 	#move sub 2 main folder
-	mv $DirPath $TOPDIR/$mainfolder/*
+	[ if ! -d $mainfolder ];then
+	mkdir $mainfolder
+	fi
+	mv $DirPath $TOPDIR/$mainfolder/
 	echo $DirPath in den $mainfolder verschoben.
   done
 done
