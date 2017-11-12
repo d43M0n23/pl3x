@@ -16,6 +16,9 @@
 # TODO:
 # --rarbg: suche der files mit grep title, remove von rarbg.txt + sample ordner.
 # -f $2: bezogen auf title
+#
+# ls | awk '{ print $9 }'
+# awk '$3 !~ /USA/ '
 ###################################################################################
 # last modify: 11.11.2017
 # bug or anything: d43M0n23@3xpl0it.com
