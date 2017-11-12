@@ -208,7 +208,7 @@ for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .txt$ | grep RARBG | while read file
   do
-	echo $file > remove_sample.log
+	echo $file >> remove_txt.log
 	echo $file gefunden. - REMOVE
 	rm $file
   done
@@ -224,7 +224,7 @@ do
   find "$file" -type d -name "Sample" | while read file
   do
 	pfad=$(readlink -f "$file")
-	echo $file > remove_sample.log
+	echo $file >> remove_sample.log
         echo $file gefunden. - REMOVE
 	rm -r $file
   done
