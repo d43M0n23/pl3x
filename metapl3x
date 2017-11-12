@@ -116,6 +116,10 @@ fi
 if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
 if ! hash ffmpeg 2>/dev/null; then sudo apt-get install --yes ffmpeg ; fi
 
+#------------------
+## FUNCTION SECTION
+#------------------
+
 # CHECK-META
 if [ "$1" = "--check" ]; then
 
@@ -151,6 +155,7 @@ done
 exit
 fi
 
+## SPECIAL PART ALL IN ONE
 # CHECK-META & WORK meta
 if [ "$1" = "--rarbg" ]; then
 
@@ -185,6 +190,40 @@ done
 exit
 fi
 
+
+if [ "$1" = "--elite" ]; then
+# for file in *.mp4 *.mkv (Testen)
+# echo ${VALUE%.*}
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+    pfad=$(readlink -f "$file") # kpl. Pfad
+        DirPath=$pfad
+        DirPath="$(dirname $DirPath)"
+        DirPath="$(basename $DirPath)"
+        echo "$DirPath"
+	mainfolder=${DirPath%%.*}
+	echo "Mainfolder: ${mainfolder}"
+        newtag=${DirPath%.XXX*}
+        newfile=${file%.*}
+#        ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
+        echo $file korrigiert.
+#       cp $file ${file}.bka # Absicherung
+#        rm $file
+  done
+#  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+#  do
+#        newfile=${file%_core.*}
+#        mv $file ${newfile}.${mp4tag}
+#        echo $file verschoben.
+#   done
+done
+exit
+fi
+
+## REMOVE PART
 
 # REMOVE CORE STRING
 if [ "$1" = "--core" ]; then
@@ -232,6 +271,7 @@ done
 exit
 fi
 
+## AUDIO CONVERT PART
 
 # Extract Audio from mkv
 if [ "$1" = "--mp3" ]; then
@@ -296,6 +336,8 @@ do
 done
 exit
 fi
+
+## FOLDER PART
 
 # create xxx-folder
 if [ "$1" = "--create" ]; then
