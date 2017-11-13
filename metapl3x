@@ -14,8 +14,7 @@
 #ffmpeg -i input_video -f ffmetadata metadata.txt
 #exiftool bumsbuero.16.09.30.ashley.cumstar.de.mp4 | grep Title
 # TODO:
-# -f $2: bezogen auf title
-#
+# --rarbg --merge
 # ls | awk '{ print $9 }'
 # awk '$3 !~ /USA/ '
 ###################################################################################
@@ -92,7 +91,7 @@ fi
 #UPDATE
 
 if [ "$1"  = "--update" ]; then
-echo -e "\n${yell}You have select the update Feature${clear}"
+echo -e "\n${yell}You select the update Feature${clear}"
 sleep 2
 cd /tmp/
 git clone https://github.com/d43M0n23/pl3x.git
@@ -122,7 +121,10 @@ fi
 if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
 if ! hash ffmpeg 2>/dev/null; then sudo apt-get install --yes ffmpeg ; fi
 
-# Banner
+#----------------
+# BANNER-FUNCTION
+#----------------
+
 sh_banner () {
 echo -e "\n"
 echo -e "                __                .__  ________          "
@@ -161,6 +163,7 @@ fi
 
 # MERGE
 if [ "$1" = "--merge" ]; then
+sh_banner;
 
 for file in *;
 do
@@ -183,6 +186,7 @@ fi
 ## SPECIAL PART ALL IN ONE
 # CHECK-META & WORK meta
 if [ "$1" = "--rarbg" ]; then
+sh_banner;
 
 for file in *;
 do
@@ -220,6 +224,7 @@ fi
 # ELITE PART
 #-----------
 if [ "$1" = "--elite" ]; then
+sh_banner;
 # for file in *.mp4 *.mkv (Testen)
 # echo ${VALUE%.*}
 # Remove TXT and Samples Dir first.
@@ -296,6 +301,7 @@ fi
 ## REMOVE PART
 # REMOVE CORE STRING
 if [ "$1" = "--core" ]; then
+sh_banner;
 
 for file in *;
 do
@@ -311,6 +317,7 @@ fi
 
 # REMOVE - TXT Files
 if [ "$1" = "--txt" ]; then
+sh_banner;
 
 for file in *;
 do
@@ -326,6 +333,7 @@ fi
 
 # REMOVE - SAMPLE DIR
 if [ "$1" = "--sample" ]; then
+sh_banner;
 
 for file in *;
 do
@@ -344,6 +352,7 @@ fi
 
 # Extract Audio from mkv
 if [ "$1" = "--mp3" ]; then
+sh_banner;
 
 for file in *;
 do
@@ -379,9 +388,7 @@ fi
 # convert mp3 to wav
 # ffmpeg -i *.mp3 *.wav
 if [ "$1" = "--wav" ]; then
-
-#Variablen
-wavtag=wav
+sh_banner;
 
 for file in *;
 do
@@ -406,6 +413,7 @@ fi
 
 # create xxx-folder
 if [ "$1" = "--create" ]; then
+	sh_banner;
 	echo "creating Folder in Source"
 	mkdir -p ${x3folder_1[*]} ${x3folder_2[*]} ${x3folder_3[*]} ${x3folder_4[*]} ${x3folder_5[*]} ${x3folder_6[*]};
 	exit;
@@ -413,26 +421,15 @@ fi
 
 # move sync to sitetip
 if [ "$1" = "--siterip" ]; then
-        echo "Moving Files to Siterip"
+	sh_banner;
+	echo "Moving Files to Siterip"
         exit;
 fi
 
-
-#Intro
-echo -e "\n"
-echo -e "                __                .__  ________          "
-echo -e "  _____   _____/  |______  ______ |  | \_____  \___  ___ "
-echo -e " /     \_/ __ \   __\__  \ \____ \|  |   _(__  <\  \/  / "
-echo -e "|  Y Y  \  ___/|  |  / __ \|  |_> >  |__/       \>    <  "
-echo -e "|__|_|  /\___  >__| (____  /   __/|____/______  /__/\_ \ "
-echo -e "      \/     \/          \/|__|               \/      \/ "
-echo -e "\n"
-echo -e "${yell}Version: ${version}${clear}"
-echo -e "${green}Last Stable: ${LATEST_VERSION}${clear}"
-echo -e "${yell}Option: --check, --core, --mp3, --create\n${clear}"
-echo -e "${yell}Option: --wav, --rarbg, --mp3 --wav, --txt\n${clear}"
-echo -e "${yell}Option: --merge, --siterip, --sample, --help\n${clear}"
-
+#----------------
+# MAIN-PART
+#----------------
+sh_banner;
 
 #for file in *.mp4 *.mkv (Testen)
 # echo ${VALUE%.*}
