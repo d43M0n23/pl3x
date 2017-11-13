@@ -132,12 +132,12 @@ echo -e "|  Y Y  \  ___/|  |  / __ \|  |_> >  |__/       \>    <  "
 echo -e "|__|_|  /\___  >__| (____  /   __/|____/______  /__/\_ \ "
 echo -e "      \/     \/          \/|__|               \/      \/ "
 echo -e "\n"
-echo -e "${yell}Version: ${version}${clear}"
-echo -e "${green}Last Stable: ${LATEST_VERSION}${clear}"
-echo -e "${yell}Option: ${red}--check, --core, --mp3, --create${clear}"
-echo -e "${yell}Option: ${red}--wav, --rarbg, --mp3 --wav, --txt${clear}"
-echo -e "${yell}Option: ${red}--merge, --siterip, --sample, --help${clear}"
-echo -e "${yell}Option: ${red}--elite${clear}"
+echo -e "                                     ${yell}Version: ${version}${clear}"
+echo -e "                                     ${green}Last Stable: ${LATEST_VERSION}${clear}\n"
+echo -e "           ${yell}Option: ${red}--check, --core, --mp3, --create${clear}"
+echo -e "         ${yell}Option: ${red}--wav, --rarbg, --mp3 --wav, --txt${clear}"
+echo -e "         ${yell}Option: ${red}--merge, --siterip, --sample, --help${clear}"
+echo -e "                                ${yell}Option: ${red}--elite${clear}\n"
 }
 
 #------------------
@@ -147,6 +147,7 @@ echo -e "${yell}Option: ${red}--elite${clear}"
 # CHECK-META
 if [ "$1" = "--check" ]; then
 sh_banner;
+
 for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
