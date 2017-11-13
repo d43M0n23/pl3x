@@ -207,6 +207,9 @@ elitelog=metapl3x_elite.txt
 if [ -f $elitelog ]; then
 	rm $elitelog
 fi
+if [ -d $unDone ]; then
+	mv $unDone .${unDone}
+fi
 
 # rm txt
 for file in *;
@@ -263,6 +266,9 @@ do
 done
 #cat remove_txt.log >> $elitelog
 #cat remove_sample.log >> $elitelog
+if [ -d ".$unDone" ]; then
+        mv .${unDone} $unDone
+fi
 exit
 fi
 
