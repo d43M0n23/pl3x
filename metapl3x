@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 ###################################################################################
@@ -15,13 +14,12 @@
 #ffmpeg -i input_video -f ffmetadata metadata.txt
 #exiftool bumsbuero.16.09.30.ashley.cumstar.de.mp4 | grep Title
 # TODO:
-# --rarbg: suche der files mit grep title, remove von rarbg.txt + sample ordner.
 # -f $2: bezogen auf title
 #
 # ls | awk '{ print $9 }'
 # awk '$3 !~ /USA/ '
 ###################################################################################
-# last modify: 11.11.2017
+# last modify: 13.11.2017
 # bug or anything: d43M0n23@3xpl0it.com
 ###################################################################################
 # Bash sTyl3!
@@ -32,12 +30,14 @@ yell='\033[33m'         #Schriftfarbe gelb
 
 #Version
 version=v1.0
-vdate=11.11.2017
+vdate=13.11.2017
 
 #Variablen
 owntag=core
 mp4tag=mp4
 mkvtag=mkv
+mp3tag=mp3
+wavtag=wav
 
 #WORKING DIR
 TOPDIR=`pwd`
@@ -60,8 +60,9 @@ INSTALL_DIR=/usr/share/metapl3x
 LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/d43M0n23/pl3x/releases/latest)
 LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
 
-
-#INSTALL
+#-------------
+# INSTALL-PART
+#-------------
 
 if [ ! -d $INSTALL_DIR ]; then
 echo -e "\n${green} + -- --=[This is your first run of the metapl3x ${clear}"
@@ -121,13 +122,31 @@ fi
 if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; sudo apt-get install --yes exiftool ; fi
 if ! hash ffmpeg 2>/dev/null; then sudo apt-get install --yes ffmpeg ; fi
 
+# Banner
+sh_banner () {
+#Intro
+echo -e "\n"
+echo -e "                __                .__  ________          "
+echo -e "  _____   _____/  |______  ______ |  | \_____  \___  ___ "
+echo -e " /     \_/ __ \   __\__  \ \____ \|  |   _(__  <\  \/  / "
+echo -e "|  Y Y  \  ___/|  |  / __ \|  |_> >  |__/       \>    <  "
+echo -e "|__|_|  /\___  >__| (____  /   __/|____/______  /__/\_ \ "
+echo -e "      \/     \/          \/|__|               \/      \/ "
+echo -e "\n"
+echo -e "${yell}Version: ${version}${clear}"
+echo -e "${green}Last Stable: ${LATEST_VERSION}${clear}"
+echo -e "${yell}Option: --check, --core, --mp3, --create\n${clear}"
+echo -e "${yell}Option: --wav, --rarbg, --mp3 --wav, --txt\n${clear}"
+echo -e "${yell}Option: --merge, --siterip, --sample, --help\n${clear}"
+}
+
 #------------------
 ## FUNCTION SECTION
 #------------------
 
 # CHECK-META
 if [ "$1" = "--check" ]; then
-
+sh_banner;
 for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
@@ -194,6 +213,7 @@ do
 done
 exit
 fi
+
 
 #-----------
 # ELITE PART
@@ -273,7 +293,6 @@ exit
 fi
 
 ## REMOVE PART
-
 # REMOVE CORE STRING
 if [ "$1" = "--core" ]; then
 
@@ -325,9 +344,6 @@ fi
 # Extract Audio from mkv
 if [ "$1" = "--mp3" ]; then
 
-#Variablen
-mp3tag=mp3
-
 for file in *;
 do
   find "$file" -type f -not -name ".*" | egrep '.mkv$|.mp4$' | while read file
@@ -343,7 +359,6 @@ do
 	ffmpeg -i $file -vn -acodec mp3 ${newfile}.${mp3tag}
         echo Aus $file Audio extrahiert.
         if [ "$2" = "--wav" ]; then
-        wavtag=wav
         pfad=$(readlink -f "$file") # kpl. Pfad
                 DirPath=$pfad
                 DirPath="$(dirname $DirPath)"
