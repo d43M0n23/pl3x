@@ -31,8 +31,6 @@ if ! hash exiftool 2>/dev/null; then sudo apt-get update && apt-get upgrade -y; 
 if ! hash ffmpeg 2>/dev/null; then sudo apt-get install --yes ffmpeg ; fi
 
 
-#for file in *.mp4 *.mkv (Testen)
-# echo ${VALUE%.*}
 for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .webm$ | while read file
@@ -46,8 +44,6 @@ do
         newfile=${file%.*}
 	avconv -i $file -c:v libx264  -crf 20 -c:a acc -strict experimental ${newfile}.${mp4tag}
         echo $file korrigiert.
-#       cp $file ${file}.bka # Absicherung
-#        rm $file
   done
 done
 

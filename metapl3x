@@ -427,6 +427,43 @@ if [ "$1" = "--siterip" ]; then
 fi
 
 #----------------
+# HELP
+#----------------
+sh_help () {
+cat << !
+---
+-- Author: d43M0n23-3xp10it | c0r3-Team @2017
+-- Supported: Linux Kali, Ubuntu, Mint, Parrot OS
+---
+
+   metapl3x help function:
+   --check	: Prüft die Metadaten der Videodatei
+   --core	: Entfernt in den Filenames das wort _core
+   --mp3	: Extrahiert aus MP4/MKV eine mp3 datei
+   --create	: Erstellt diverse XXX Folder
+   --wav	: Extrahiert aus MP4/MKV eine wav datei
+   --rarbg	: Bearbeitet nur Datein mit RARBG Tag im Titel
+   --mp3 --wav	: Extrahiert automatisch mp3 und wav aus Videofiles
+   --txt	: Löscht alle *.txt aus den Video Foldern
+   --merge	: Kombiniert 2 Video Dateien
+   --siterip	: Verschiebt alle Video Files von Sync zu SiteRip:infinity
+   --sample	: Löscht alle Sample Files und Ordner
+   --help	: Diese Anzeige
+   --elite	: Löscht *txt und Sample,Konvertiert Meta und verschiebt in Mainfolder
+
+!
+   exit
+}
+
+# move sync to sitetip
+if [ "$1" = "--help" ]; then
+        sh_banner;
+        sh_help;
+        exit;
+fi
+
+
+#----------------
 # MAIN-PART
 #----------------
 sh_banner;
