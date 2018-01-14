@@ -154,7 +154,8 @@ for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
   do
-        exiftool $file | grep Title 2>&1 | tee meta.check.txt
+#$cmd $logdir/mail.log | egrep "LOGIN.*${roaduser}" | cut -d"," -f3 2>&1 | tee ${roaduser}_${outfile}
+        exiftool $file | grep Title 2>&1 | tee -a meta.check.txt
   done
 done
 exit
