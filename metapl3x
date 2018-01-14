@@ -154,7 +154,7 @@ for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
   do
-        exiftool $file | grep Title
+        exiftool $file | grep Title 2>&1 | tee meta.check.txt
   done
 done
 exit
