@@ -195,8 +195,8 @@ do
   do
 	echo $file
 	working_file=$(exiftool $file | grep Title | grep RARBG | tee -a rarbg_title.log)
-	if $working_file ; then
-	pfad=$(readlink -f "$file") # kpl. Pfad
+	#if $working_file ; then
+	pfad=$(readlink -f "$working_file") # kpl. Pfad
 	DirPath=$pfad
 	DirPath="$(dirname $DirPath)"
 	DirPath="$(basename $DirPath)"
@@ -207,7 +207,7 @@ do
 	echo $file korrigiert.
 	cp $file ${file}.bka # Absicherung
 	rm $file
-	fi
+#	fi
   done
 
 #  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
