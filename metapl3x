@@ -189,6 +189,7 @@ fi
 # CHECK-META & WORK meta
 if [ "$1" = "--rarbg" ]; then
 sh_banner;
+rarbglog=remove_rarbg.log
 
 for file in *;
 do
@@ -196,18 +197,23 @@ do
   do
 	echo $file
 	working_file=$(exiftool $file | grep Title | grep RARBG | tee -a rarbg_title.log)
+## RM log
+	if [ -f $rarbglog ]; then
+        	rm $rarbglog
+	fi
+	echo $working_file
 	#if $working_file ; then
-	pfad=$(readlink -f "$working_file") # kpl. Pfad
-	DirPath=$pfad
-	DirPath="$(dirname $DirPath)"
-	DirPath="$(basename $DirPath)"
-	echo "$DirPath"
-	newtag=${DirPath%.XXX*}
-	newfile=${file%.*}
-	ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
-	echo $file korrigiert.
-	cp $file ${file}.bka # Absicherung
-	rm $file
+	#pfad=$(readlink -f "$working_file") # kpl. Pfad
+	#DirPath=$pfad
+	#DirPath="$(dirname $DirPath)"
+	#DirPath="$(basename $DirPath)"
+	#echo "$DirPath"
+	#newtag=${DirPath%.XXX*}
+	#newfile=${file%.*}
+	#ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
+	#echo $file korrigiert.
+	#cp $file ${file}.bka # Absicherung
+	#rm $file
 #	fi
   done
 
