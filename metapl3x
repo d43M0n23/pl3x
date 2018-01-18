@@ -202,7 +202,7 @@ do
 #	echo $file
 	working_file=$(exiftool $file | grep Title | grep RARBG | tee -a rarbg_title.log)
 	echo $working_file
-#! -z "$var"
+	#! -z "$var"
 	if [ ! -z  "$working_file" ] ; then
 	pfad=$(readlink -f "$file") # kpl. Pfad
 	DirPath=$pfad
@@ -213,8 +213,12 @@ do
 	newfile=${file%.*}
 	ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
 	echo $file korrigiert.
-	cp $file ${file}.bka # Absicherung
+#	cp $file ${file}.bka # Absicherung
 	rm $file
+        #remove coreTag in filename
+        topfile=${newfile}.${mp4tag}
+        mv ${newfile}_${owntag}.${mp4tag} ${topfile}
+        echo ${newfile}_${owntag}.${mp4tag} verschoben zu $topfile.
 	fi
   done
 
