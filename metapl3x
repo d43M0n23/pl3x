@@ -195,7 +195,7 @@ for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
   do
-	echo $file
+#	echo $file
 	working_file=$(exiftool $file | grep Title | grep RARBG | tee -a rarbg_title.log)
 ## RM log
 	if [ -f $rarbglog ]; then
