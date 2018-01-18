@@ -202,8 +202,8 @@ do
 #	echo $file
 	working_file=$(exiftool $file | grep Title | grep RARBG | tee -a rarbg_title.log)
 	echo $working_file
-
-	if $working_file ; then
+#! -z "$var"
+	if [ $working_file ] ; then
 	pfad=$(readlink -f "$file") # kpl. Pfad
 	DirPath=$pfad
 	DirPath="$(dirname $DirPath)"
