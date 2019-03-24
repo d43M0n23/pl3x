@@ -18,7 +18,7 @@
 # ls | awk '{ print $9 }'
 # awk '$3 !~ /USA/ '
 ###################################################################################
-# last modify: 13.11.2017
+# last modify: 23.03.2019
 # bug or anything: d43M0n23@3xpl0it.com
 ###################################################################################
 # Bash sTyl3!
@@ -29,7 +29,7 @@ yell='\033[33m'         #Schriftfarbe gelb
 
 #Version
 version=v1.0
-vdate=13.11.2017
+vdate=23.03.2019
 
 #Variablen
 owntag=core
@@ -270,6 +270,17 @@ do
         rm -r $file
   done
 done
+
+# Mirror.exe
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .exe$ | grep RARBG | while read file
+  do
+        echo $file gefunden. - REMOVE | tee -a remove_txt.log >> $elitelog
+        rm $file
+  done
+done
+
 
 # main
 for file in *;
