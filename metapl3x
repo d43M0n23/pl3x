@@ -435,7 +435,7 @@ fi
 
 ## VR PART
 ## --vr-mobile
-if [ "$1" = "--vr-mobil" ]; then
+if [ "$1" = "--vr-mobile" ]; then
 sh_banner;
 
 for file in *;
