@@ -18,7 +18,7 @@
 # ls | awk '{ print $9 }'
 # awk '$3 !~ /USA/ '
 ###################################################################################
-# last modify: 23.03.2019
+# last modify: 04.10.2020
 # bug or anything: d43M0n23@3xpl0it.com
 ###################################################################################
 # Bash sTyl3!
@@ -29,7 +29,7 @@ yell='\033[33m'         #Schriftfarbe gelb
 
 #Version
 version=v1.0
-vdate=23.03.2019
+vdate=04.10.2020
 
 #Variablen
 owntag=core
@@ -139,7 +139,7 @@ echo -e "                                       ${green}Last Stable: ${LATEST_VE
 echo -e "${yell}Option: ${red}--check, --core, --mp3, --create${clear}"
 echo -e "${yell}Option: ${red}--wav, --rarbg, --mp3 --wav, --txt${clear}"
 echo -e "${yell}Option: ${red}--merge, --siterip, --sample, --help${clear}"
-echo -e "${yell}Option: ${red}--elite${clear}\n"
+echo -e "${yell}Option: ${red}--elite, --vr-mobile, --vr180${clear}\n"
 }
 
 #------------------
@@ -433,6 +433,37 @@ done
 exit
 fi
 
+## VR PART
+## --vr-mobile
+if [ "$1" = "--vr-mobil" ]; then
+sh_banner;
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+    pfad=$(readlink -f "$file") # kpl. Pfad
+        DirPath=$pfad
+        DirPath="$(dirname $DirPath)"
+        DirPath="$(basename $DirPath)"
+        echo -e "${green}Fileordner:${yell} ${DirPath}${clear}"
+        #mainfolder section
+        mainfolder=${DirPath%%.*}
+        echo -e "${green}Mainfolder:${yell} ${mainfolder}${clear}"
+        #file metapart
+        newtag=${DirPath%.XXX*}
+        newfile=${file%.*}
+	ffmpeg -i $file -vf scale=2080x1040,setsar=1:1 -preset fast -profile:v main -crf 17 ${newfile}_2k.${mp4tag}
+	 echo -e "\n${green}${file} konvertiert auf 2k Mobile.${clear}"
+       # mv $DirPath $TOPDIR/$mainfolder/
+       # echo $DirPath in den $mainfolder verschoben.
+  done
+done
+exit
+fi
+
+## --vr180
+
 ## FOLDER PART
 
 # create xxx-folder
@@ -474,7 +505,8 @@ cat << !
    --sample	: Löscht alle Sample Files und Ordner
    --help	: Diese Anzeige
    --elite	: Löscht *txt und Sample,Konvertiert Meta und verschiebt in Mainfolder
-
+   --vr-mobile	: Konvertiert VR 5400 zu VR 2040 Res
+   --vr180	: Konvertiert VR360 zu VR180
 !
    exit
 }
