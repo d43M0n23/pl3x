@@ -463,6 +463,33 @@ exit
 fi
 
 ## --vr180
+if [ "$1" = "--vr180" ]; then
+sh_banner;
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+    pfad=$(readlink -f "$file") # kpl. Pfad
+        DirPath=$pfad
+        DirPath="$(dirname $DirPath)"
+        DirPath="$(basename $DirPath)"
+        echo -e "${green}Fileordner:${yell} ${DirPath}${clear}"
+        #mainfolder section
+        mainfolder=${DirPath%%.*}
+        echo -e "${green}Mainfolder:${yell} ${mainfolder}${clear}"
+        #file metapart
+        newtag=${DirPath%.XXX*}
+        newfile=${file%.*}
+        ffmpeg -i $file --c:v libx264 -preset fast -crf 17 -vf "stereo3d=abl:sbsl,scale=4320x1080" -c:a copy ${newfile}_180.${mp4tag}
+         echo -e "\n${green}${file} konvertiert auf VR-180.${clear}"
+       # mv $DirPath $TOPDIR/$mainfolder/
+       # echo $DirPath in den $mainfolder verschoben.
+  done
+done
+exit
+fi
+
 
 ## FOLDER PART
 
