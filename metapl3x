@@ -481,7 +481,7 @@ do
         #file metapart
         newtag=${DirPath%.XXX*}
         newfile=${file%.*}
-        ffmpeg -i $file --c:v libx264 -preset fast -crf 17 -vf "stereo3d=abl:sbsl,scale=4320x1080" -c:a copy ${newfile}_180.${mp4tag}
+        ffmpeg -i $file -c:v libx264 -preset fast -crf 17 -vf "stereo3d=abl:sbsl,scale=4320x1080" -c:a copy ${newfile}_180.${mp4tag}
          echo -e "\n${green}${file} konvertiert auf VR-180.${clear}"
        # mv $DirPath $TOPDIR/$mainfolder/
        # echo $DirPath in den $mainfolder verschoben.
