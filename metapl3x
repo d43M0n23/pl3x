@@ -254,7 +254,7 @@ do
         #rename filename
         topfile=${newtag}.${mp4tag}
         #mv ${file} ${topfile}
-	cp ${file} ${topfile}
+	cp ${file} ${DirPath}/${topfile}
         echo ${file} unbennant zu $topfile.
         fi
   done
