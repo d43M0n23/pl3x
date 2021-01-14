@@ -199,7 +199,6 @@ for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
   do
-#	echo $file
 	working_file=$(exiftool $file | grep Title | grep RARBG | tee -a rarbg_title.log)
 	echo $working_file
 	#! -z "$var"
@@ -213,7 +212,6 @@ do
 	newfile=${file%.*}
 	ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
 	echo $file korrigiert.
-#	cp $file ${file}.bka # Absicherung
 	rm $file
         #remove coreTag in filename
         topfile=${newfile}.${mp4tag}
@@ -221,16 +219,47 @@ do
         echo ${newfile}_${owntag}.${mp4tag} verschoben zu $topfile.
 	fi
   done
-
-#  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
-#  do
-#        newfile=${file%_core.*}
-#        mv $file ${newfile}.${mp4tag}
-#        echo $file verschoben.
-#  done
 done
 exit
 fi
+
+# CHECK-META & WORK meta
+if [ "$1" = "--rename" ]; then
+sh_banner;
+rarbglog=remove_rarbg.log
+if [ -f $rarbglog ]; then
+        rm $rarbglog
+fi
+
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+        working_file=$(exiftool $file | grep Title | tee -a rarbg_title.log)
+        echo $working_file
+        #! -z "$var"
+        if [ ! -z  "$working_file" ] ; then
+        pfad=$(readlink -f "$file") # kpl. Pfad
+        DirPath=$pfad
+        DirPath="$(dirname $DirPath)"
+        DirPath="$(basename $DirPath)"
+        echo "$DirPath"
+        newtag=${DirPath%.XXX*}
+        newfile=${file%.*}
+        #ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
+        echo $file korrigiert.
+        #rm $file
+        #remove coreTag in filename
+        topfile=${newtag}.${mp4tag}
+        mv ${file} ${topfile}
+        echo ${file} verschoben zu $topfile.
+        fi
+  done
+done
+exit
+fi
+
 
 
 #-----------
