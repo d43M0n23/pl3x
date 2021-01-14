@@ -140,6 +140,9 @@ echo -e "${yell}Option: ${red}--check, --core, --mp3, --create${clear}"
 echo -e "${yell}Option: ${red}--wav, --rarbg, --mp3 --wav, --txt${clear}"
 echo -e "${yell}Option: ${red}--merge, --siterip, --sample, --help${clear}"
 echo -e "${yell}Option: ${red}--elite, --vr-mobile, --vr180${clear}\n"
+echo -e "${yell}Option: ${red}--elite, --vr-mobile, --vr180${clear}\n"
+echo -e "${yell}Option: ${red}--rename${clear}\n"
+
 }
 
 #------------------
@@ -226,7 +229,7 @@ fi
 # CHECK-META & WORK meta
 if [ "$1" = "--rename" ]; then
 sh_banner;
-rarbglog=remove_rarbg.log
+rarbglog=rename.log
 if [ -f $rarbglog ]; then
         rm $rarbglog
 fi
@@ -236,9 +239,8 @@ for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
   do
-        working_file=$(exiftool $file | grep Title | tee -a rarbg_title.log)
+        working_file=$(exiftool $file | grep Title | tee -a rename.log)
         echo $working_file
-        #! -z "$var"
         if [ ! -z  "$working_file" ] ; then
         pfad=$(readlink -f "$file") # kpl. Pfad
         DirPath=$pfad
@@ -249,11 +251,11 @@ do
         newfile=${file%.*}
         #ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
         echo $file korrigiert.
-        #rm $file
-        #remove coreTag in filename
+        #rename filename
         topfile=${newtag}.${mp4tag}
-        mv ${file} ${topfile}
-        echo ${file} verschoben zu $topfile.
+        #mv ${file} ${topfile}
+	cp ${file} ${topfile}
+        echo ${file} unbennant zu $topfile.
         fi
   done
 done
