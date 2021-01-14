@@ -241,22 +241,21 @@ do
   do
         working_file=$(exiftool $file | grep Title | tee -a rename.log)
         echo $working_file
-        if [ ! -z  "$working_file" ] ; then
+        #if [ ! -z  "$working_file" ] ; then
         pfad=$(readlink -f "$file") # kpl. Pfad
         DirPath=$pfad
         DirPath="$(dirname $DirPath)"
         DirPath="$(basename $DirPath)"
-        echo "$DirPath"
+        #echo "$DirPath"
         newtag=${DirPath%.XXX*}
         newfile=${file%.*}
-        #ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
-        echo $file korrigiert.
         #rename filename
         topfile=${newtag}.${mp4tag}
         #mv ${file} ${topfile}
-	mv ${file} ${DirPath}/${topfile}
+	#mv ${file} ${DirPath}/${topfile}
+	mv ${file} ${topfile}
         echo ${file} unbennant zu $topfile.
-        fi
+        #fi
   done
 done
 exit
