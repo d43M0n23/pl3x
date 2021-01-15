@@ -253,7 +253,7 @@ do
 	#echo $newtag TAG
 	#echo $newfile FILE
        if [ "$newfile" != "$newtag" ] ; then
-	if [ $2 != '' ]; then
+	if [ -n $2  ]; then
 	lable=$2
 	topfile=${lable}.${newtag#*.}.${mp4tag}
 	echo Hier wird Variable 2 gesetzt !!!
