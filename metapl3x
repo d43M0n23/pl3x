@@ -253,11 +253,11 @@ do
         #rename filename
         topfile=${newtag}.${mp4tag}
         #mv ${file} ${topfile}
-echo $newtag TAG
-echo $newfile FILE
+#echo $newtag TAG
+#echo $newfile FILE
        if [ "$newfile" != "$newtag" ] ; then
 	echo filname ist nicht gleich.
-	#mv ${file} ${DirPath}/${topfile}
+	mv ${file} ${DirPath}/${topfile}
         echo ${file} unbennant zu $topfile.
        fi
   done
