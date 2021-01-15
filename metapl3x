@@ -258,7 +258,7 @@ do
        if [ "$newfile" != "$newtag" ] ; then
 	echo filname ist nicht gleich.
 	mv ${file} ${DirPath}/${topfile}
-        echo ${file} unbennant zu $topfile | tee -a rename.log
+        echo ${newfile} unbennant zu $topfile | tee -a rename.log
        fi
   done
 done
