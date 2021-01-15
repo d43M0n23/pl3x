@@ -239,9 +239,6 @@ for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
   do
-#        working_file=$(exiftool $file | grep Title | tee -a rename.log)
-#        echo $working_file
-        #if [ ! -z  "$working_file" ] ; then
         pfad=$(readlink -f "$file") # kpl. Pfad
         DirPath=$pfad
         DirPath="$(dirname $DirPath)"
@@ -256,6 +253,10 @@ do
 	#echo $newtag TAG
 	#echo $newfile FILE
        if [ "$newfile" != "$newtag" ] ; then
+	if [ -z "$2"]; then
+	lable=$2
+	topfile=${lable}.${newtag#*.}.${mp4tag}
+	fi
 #	echo filname ist nicht gleich.
 	mv ${file} ${DirPath}/${topfile}
         echo ${newfile} unbennant zu $topfile | tee -a rename.log
