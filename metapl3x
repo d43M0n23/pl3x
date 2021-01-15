@@ -256,7 +256,7 @@ do
 	#echo $newtag TAG
 	#echo $newfile FILE
        if [ "$newfile" != "$newtag" ] ; then
-	echo filname ist nicht gleich.
+#	echo filname ist nicht gleich.
 	mv ${file} ${DirPath}/${topfile}
         echo ${newfile} unbennant zu $topfile | tee -a rename.log
        fi
@@ -288,6 +288,16 @@ fi
 for file in *;
 do
   find "$file" -type f -not -name ".*" | grep .txt$ | grep RARBG | while read file
+  do
+        echo $file gefunden. - REMOVE | tee -a remove_txt.log >> $elitelog
+        rm $file
+  done
+done
+
+# rm nfo
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .nfo$ | while read file
   do
         echo $file gefunden. - REMOVE | tee -a remove_txt.log >> $elitelog
         rm $file
