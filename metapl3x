@@ -249,6 +249,7 @@ do
         #echo "$DirPath"
         newtag=${DirPath%.XXX*}
         newfile=${file%.*}
+	newfile=${newfile#*/}
         #rename filename
         topfile=${newtag}.${mp4tag}
         #mv ${file} ${topfile}
