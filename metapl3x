@@ -253,14 +253,14 @@ do
 	#echo $newtag TAG
 	#echo $newfile FILE
        if [ "$newfile" != "$newtag" ] ; then
-	if [ -n $2  ]; then
-	lable=$2
-	topfile=${lable}.${newtag#*.}.${mp4tag}
-	echo Hier wird Variable 2 gesetzt !!!
-	echo Name: $lable
-	echo Anhang: .${newtag#*.}
-	echo Topfile: ${topfile}
-	fi
+#	if [ -n $2  ]; then
+#	lable=$2
+#	topfile=${lable}.${newtag#*.}.${mp4tag}
+#	echo Hier wird Variable 2 gesetzt !!!
+#	echo Name: $lable
+#	echo Anhang: .${newtag#*.}
+#	echo Topfile: ${topfile}
+#	fi
 #	echo filname ist nicht gleich.
 	mv ${file} ${DirPath}/${topfile}
         echo ${newfile} unbennant zu $topfile | tee -a rename.log
