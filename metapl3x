@@ -248,11 +248,13 @@ do
 	echo  FileCUT ${newfile}
 	newfile=${newfile#*/}
         topfile=${newtag}.${mp4tag}
-        if [ "$2" = "--lower" ]; then
-	topfile="${topfile,,}"
- 	fi
+
        if [ "$newfile" != "$newtag" ] ; then
 	mv ${file} ${DirPath}/${topfile}
+	if [ "$2" = "--lower" ]; then
+	mv ${DirPath}/${topfile} ${DirPath}/${topfile,,}
+	fi
+
        	echo ${newfile} unbennant zu $topfile | tee -a rename.log
        fi
   done
