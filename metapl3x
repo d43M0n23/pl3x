@@ -247,7 +247,6 @@ do
         newfile=${file%.*}
 	newfile=${newfile#*/}
         topfile=${newtag}.${mp4tag}
-	fi
        if [ "$newfile" != "$newtag" ] ; then
 	mv ${file} ${DirPath}/${topfile}
        	echo ${newfile} unbennant zu $topfile | tee -a rename.log
