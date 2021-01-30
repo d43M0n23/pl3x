@@ -141,8 +141,8 @@ echo -e "${yell}Option: ${red}--check, --core, --mp3, --create${clear}"
 echo -e "${yell}Option: ${red}--wav, --rarbg, --mp3 --wav, --txt${clear}"
 echo -e "${yell}Option: ${red}--merge, --siterip, --sample, --help${clear}"
 echo -e "${yell}Option: ${red}--elite, --vr-mobile, --vr180${clear}"
-echo -e "${yell}Option: ${red}--rename${clear}\n"
-
+echo -e "${yell}Option: ${red}--rename $newname${clear}\n"
+echo -e "${yell}Option: ${red}--name${clear}\n"
 }
 
 #------------------
@@ -280,16 +280,16 @@ do
         #BigNaturals.20.02.03.Indica.Flower.The.Right.Fit.XXX.1080p.MP4-KTR[rarbg]
         newfile=${file%.*}
         #bignaturals.20.02.03.indica.flower.the.right.fit [.mp4]
-        newfile=${newfile#*/}
+        newfile=${newfile#*.}
 	echo $newfile
-	sleep3
+	sleep 3
         #20.02.03.indica.flower.the.right.fit
         lable="$2"
 	echo $lable
-	sleep3
+	sleep 3
         topfile=${lable}.${newfile}.${mp4tag}
 	echo $topfile
-	sleep3
+	sleep 3
         #rename filename
      #  if [ "$newfile" != "$newtag" ] ; then
         mv ${file} ${DirPath}/${topfile}
