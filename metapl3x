@@ -141,8 +141,7 @@ echo -e "${yell}Option: ${red}--check, --core, --mp3, --create${clear}"
 echo -e "${yell}Option: ${red}--wav, --rarbg, --mp3 --wav, --txt${clear}"
 echo -e "${yell}Option: ${red}--merge, --siterip, --sample, --help${clear}"
 echo -e "${yell}Option: ${red}--elite, --vr-mobile, --vr180${clear}"
-echo -e "${yell}Option: ${red}--rename $newname${clear}\n"
-echo -e "${yell}Option: ${red}--name${clear}\n"
+echo -e "${yell}Option: ${red}--rename, --name, --lowname${clear}\n"
 }
 
 #------------------
@@ -282,6 +281,7 @@ do
         #BigNaturals.20.02.03.Indica.Flower.The.Right.Fit.XXX.1080p.MP4-KTR[rarbg]
 	echo  NEWTAG/DIRPATHCUT Bei XXX ${newtag}
         newfile=${file%.*}
+	newfile=${newfile#*/}
         echo  FileCUT - keine Endung ${newfile}
         #bignaturals.20.02.03.indica.flower.the.right.fit [.mp4]
         newfile=${newfile#*.}
