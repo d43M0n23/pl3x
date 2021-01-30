@@ -287,7 +287,7 @@ do
         newfile=${newfile#*.}
 	echo Ohne Hoster: $newfile
 	sleep 3
-	echo LOWERCASE: "${$newfile,,}"
+	echo LOWERCASE: "${newfile,,}"
         #20.02.03.indica.flower.the.right.fit
         lable="$2"
 	echo $lable
