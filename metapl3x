@@ -226,7 +226,41 @@ done
 exit
 fi
 
-# CHECK-META & WORK meta
+# Name-Ordnername wird zu Name
+if [ "$1" = "--name" ]; then
+sh_banner;
+rarbglog=name.log
+if [ -f $rarbglog ]; then
+        rm $rarbglog
+fi
+
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+        pfad=$(readlink -f "$file") # kpl. Pfad
+        DirPath=$pfad
+        DirPath="$(dirname $DirPath)"
+        DirPath="$(basename $DirPath)"
+        newtag=${DirPath%.XXX*}
+        newfile=${file%.*}
+	newfile=${newfile#*/}
+        topfile=${newtag}.${mp4tag}
+	fi
+       if [ "$newfile" != "$newtag" ] ; then
+	mv ${file} ${DirPath}/${topfile}
+       	echo ${newfile} unbennant zu $topfile | tee -a rename.log
+       fi
+  done
+done
+exit
+fi
+
+######################
+####RENAME
+##########
+# Neuer name wird gesetzt
 if [ "$1" = "--rename" ]; then
 sh_banner;
 rarbglog=rename.log
@@ -243,39 +277,23 @@ do
         DirPath=$pfad
         DirPath="$(dirname $DirPath)"
         DirPath="$(basename $DirPath)"
-        #echo "$DirPath"
         newtag=${DirPath%.XXX*}
-	#BigNaturals.20.02.03.Indica.Flower.The.Right.Fit.XXX.1080p.MP4-KTR[rarbg]
+        #BigNaturals.20.02.03.Indica.Flower.The.Right.Fit.XXX.1080p.MP4-KTR[rarbg]
         newfile=${file%.*}
-	#bignaturals.20.02.03.indica.flower.the.right.fit [.mp4]
-	newfile=${newfile#*/}
-	#20.02.03.indica.flower.the.right.fit
-	if [ -n $2  ]; then
-               lable=$2
-               topfile=${lable}.${newfile}.${mp4tag}
-        #       echo Hier wird Variable 2 gesetzt !!!
-        #       echo Name: $lable
-        #       echo Anhang: .${newtag#*.}
-        #       echo Topfile: ${topfile}
-        else
-
-		### ERROR
-
+        #bignaturals.20.02.03.indica.flower.the.right.fit [.mp4]
+        newfile=${newfile#*/}
+        #20.02.03.indica.flower.the.right.fit
+        lable=$2
+        topfile=${lable}.${newfile}.${mp4tag}
         #rename filename
-        topfile=${newtag}.${mp4tag}
-	fi
-	#echo $newtag TAG
-	#echo $newfile FILE
-       if [ "$newfile" != "$newtag" ] ; then
-	#????
-	mv ${file} ${DirPath}/${topfile}
-       	echo ${newfile} unbennant zu $topfile | tee -a rename.log
-       fi
+     #  if [ "$newfile" != "$newtag" ] ; then
+        mv ${file} ${DirPath}/${topfile}
+        echo ${newfile} unbennant zu $topfile | tee -a rename.log
+     #  fi
   done
 done
 exit
 fi
-
 
 
 #-----------
