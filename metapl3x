@@ -281,9 +281,15 @@ do
         newfile=${file%.*}
         #bignaturals.20.02.03.indica.flower.the.right.fit [.mp4]
         newfile=${newfile#*/}
+	echo $newfile
+	sleep3
         #20.02.03.indica.flower.the.right.fit
-        lable=$2
+        lable="$2"
+	echo $lable
+	sleep3
         topfile=${lable}.${newfile}.${mp4tag}
+	echo $topfile
+	sleep3
         #rename filename
      #  if [ "$newfile" != "$newtag" ] ; then
         mv ${file} ${DirPath}/${topfile}
