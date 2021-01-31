@@ -262,6 +262,41 @@ done
 exit
 fi
 
+
+## move 2 lower
+# Name-Ordnername wird zu Name
+if [ "$1" = "--lower" ]; then
+sh_banner;
+rarbglog=name.log
+if [ -f $rarbglog ]; then
+        rm $rarbglog
+fi
+
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+        pfad=$(readlink -f "$file") # kpl. Pfad
+        DirPath=$pfad
+        DirPath="$(dirname $DirPath)"
+        DirPath="$(basename $DirPath)"
+        newtag=${DirPath%.XXX*}
+        echo  NEWTAG/DIRPATH CUT ${newtag}
+        newfile=${file%.*}
+        echo  FileCUT ${newfile}
+        newfile=${newfile#*/}
+        topfile=${newfile}.${mp4tag}
+	#mv ${file} ${DirPath}/${topfile}
+        mv $file ${DirPath}/${topfile,,}
+
+        echo ${file} unbennant zu $topfile 
+  done
+done
+exit
+fi
+
+
 ######################
 ####RENAME
 ##########
