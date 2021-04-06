@@ -144,11 +144,13 @@ echo -e "                                       ${green}Last Stable: ${LATEST_VE
 echo -e "                                         c0d3R: d43M0n23\n"
 echo -e "${yell}Information Option: ${red}--check, --core, --mp3, --create${clear}"
 echo -e "${yell}RARGB Option: ${red}--elite${clear}"
-echo -e "${yell}Sound Option: ${red}--wav, --rarbg, --mp3 --wav, --txt${clear}"
-echo -e "${yell}Edit Option: ${red}--merge, --siterip, --sample, --help${clear}"
-echo -e "${yell}VR Option: ${red}--elite, --vr-mobile, --vr180${clear}"
+echo -e "${yell}Sound Option: ${red} --mp3, --wav, --rarbg, --mp3 --wav, --txt${clear}"
+echo -e "${yell}Edit Option: ${red}--merge, --siterip, --sample${clear}"
+echo -e "${yell}VR Option: ${red}--vr-mobile, --vr180${clear}"
 echo -e "${yell}Name Option: ${red}--rename, --name, --lowname${clear}"
-echo -e "${yell}VLC Option: ${red}--vlc${clear}\n"
+echo -e "${yell}VLC-List Option: ${red}--vlc${clear}"
+echo -e "${yell}Help Option: ${red}--help${clear}\n"
+
 }
 
 #----------------
