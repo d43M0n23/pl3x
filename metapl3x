@@ -142,21 +142,13 @@ echo -e "\n"
 echo -e "                                           ${yell}Version: ${version}${clear}"
 echo -e "                                       ${green}Last Stable: ${LATEST_VERSION}${clear}"
 echo -e "                                       ${blue}c0d3R: d43M0n23${clear}\n"
-echo -e "${yell}File Information${clear}"
-echo -e "${yell}Option: ${red}--check, --core, --mp3, --create${clear}\n"
-echo -e "${yell}File Information${clear}"
-echo -e "${yell}Option: ${red}--wav, --rarbg, --mp3 --wav, --txt${clear}"
-echo -e "${yell}File Information${clear}"
-echo -e "${yell}Option: ${red}--merge, --siterip, --sample, --help${clear}"
-echo -e "${yell}File Information${clear}"
-echo -e "${yell}Option: ${red}--elite, --vr-mobile, --vr180${clear}"
-echo -e "${yell}Name:${clear}"
-echo -e "${yell}Option: ${red}--rename, --name, --lowname${clear}\n"
-echo -e "${yell}Farben${clear}"
-echo -e "${green}d43M0n23${clear}"
-echo -e "${blue}d43M0n23${clear}"
-echo -e "${mag}d43M0n23${clear}"
-echo -e "${turk}d43M0n23${clear}"
+echo -e "${yell}Information Option: ${red}--check, --core, --mp3, --create${clear}\n"
+echo -e "${yell}RARGB Option: ${red}--elite${clear}"
+echo -e "${yell}Sound Option: ${red}--wav, --rarbg, --mp3 --wav, --txt${clear}"
+echo -e "${yell}Edit Option: ${red}--merge, --siterip, --sample, --help${clear}"
+echo -e "${yell}VR Option: ${red}--elite, --vr-mobile, --vr180${clear}"
+echo -e "${yell}Name Option: ${red}--rename, --name, --lowname${clear}\n"
+echo -e "${yell}VLC Option: ${red}--vlc${clear}\n"
 }
 
 #----------------
@@ -165,8 +157,8 @@ echo -e "${turk}d43M0n23${clear}"
 sh_help () {
 cat << !
 ---
--- Author: d43M0n23-3xp10it | c0r3-Team @2017
--- Supported: Linux Kali, Ubuntu, Mint, Parrot OS
+-- Author: d43M0n23-3xpl0it | c0r3-Team @2021
+-- Supported: Linux Kali, Debian, Ubuntu
 ---
 
    metapl3x help function:
