@@ -162,21 +162,31 @@ cat << !
 ---
 
    metapl3x help function:
+   Information:
    --check      : Prüft die Metadaten der Videodatei
-   --core       : Entfernt in den Filenames das wort _core
-   --mp3        : Extrahiert aus MP4/MKV eine mp3 datei
-   --create     : Erstellt diverse XXX Folder
-   --wav        : Extrahiert aus MP4/MKV eine wav datei
-   --rarbg      : Bearbeitet nur Datein mit RARBG Tag im Titel
-   --mp3 --wav  : Extrahiert automatisch mp3 und wav aus Videofiles
-   --txt        : Löscht alle *.txt aus den Video Foldern
-   --merge      : Kombiniert 2 Video Dateien
-   --siterip    : Verschiebt alle Video Files von Sync zu SiteRip:infinity
-   --sample     : Löscht alle Sample Files und Ordner
-   --help       : Diese Anzeige
+   Master:
    --elite      : Löscht *txt und Sample,Konvertiert Meta und verschiebt in Mainfolder
+   Remove:
+   --core       : Entfernt in den Filenames das wort _core
+   --txt        : Löscht alle *.txt aus den Video Foldern
+   --sample     : Löscht alle Sample Files und Ordner
+   Sound:
+   --mp3        : Extrahiert aus MP4/MKV eine mp3 datei
+   --wav        : Extrahiert aus MP4/MKV eine wav datei
+   --mp3 --wav  : Extrahiert automatisch mp3 und wav aus Videofiles
+   VR:
    --vr-mobile  : Konvertiert VR 5400 zu VR 2040 Res
    --vr180      : Konvertiert VR360 zu VR180
+   Folder:
+   --create     : Erstellt diverse XXX Folder
+   Tag Rename:
+   --rarbg      : Bearbeitet nur Datein mit RARBG Tag im Titel
+   Sync-Dev:
+   --siterip    : Verschiebt alle Video Files von Sync zu SiteRip:infinity
+   Dev:
+   --merge      : Kombiniert 2 Video Dateien
+   Help:
+   --help       : Diese Anzeige
 !
    exit
 }
