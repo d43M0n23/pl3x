@@ -702,6 +702,25 @@ if [ "$1" = "--help" ]; then
 fi
 
 
+#VLC
+if [ "$1" = "--vlc" ]; then
+sh_banner;
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+#$cmd $logdir/mail.log | egrep "LOGIN.*${roaduser}" | cut -d"," -f3 2>&1 | tee ${roaduser}_${outfile}
+        #exiftool $file | grep Title  | grep RARBG 2>&1 | tee -a meta.check.txt
+        exiftool $file | grep Title
+  done
+done
+exit
+fi
+
+
+
+
 #----------------
 # BASIC-PART
 #----------------
@@ -709,26 +728,28 @@ sh_banner;
 
 #for file in *.mp4 *.mkv (Testen)
 # echo ${VALUE%.*}
-for file in *;
-do
-  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
-  do
-    pfad=$(readlink -f "$file") # kpl. Pfad
-	DirPath=$pfad
-	DirPath="$(dirname $DirPath)"
-	DirPath="$(basename $DirPath)"
-	echo "$DirPath"
-	newtag=${DirPath%.XXX*}
-	newfile=${file%.*}
-	ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
-	echo $file korrigiert.
-#	cp $file ${file}.bka # Absicherung
-	rm $file
-  done
-  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
-  do
-        newfile=${file%_core.*}
-        mv $file ${newfile}.${mp4tag}
-        echo $file verschoben.
-   done
-done
+
+
+#for file in *;
+#do
+#  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+#  do
+#    pfad=$(readlink -f "$file") # kpl. Pfad
+#	DirPath=$pfad
+#	DirPath="$(dirname $DirPath)"
+#	DirPath="$(basename $DirPath)"
+#	echo "$DirPath"
+#	newtag=${DirPath%.XXX*}
+#	newfile=${file%.*}
+#	ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
+#	echo $file korrigiert.
+##	cp $file ${file}.bka # Absicherung
+#	rm $file
+#  done
+#  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+#  do
+#        newfile=${file%_core.*}
+#        mv $file ${newfile}.${mp4tag}
+#        echo $file verschoben.
+#   done
+#done
