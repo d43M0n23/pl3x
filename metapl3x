@@ -31,6 +31,8 @@ blue='\033[34m'         #Schriftfarbe blau
 mag='\033[35m'          #Schriftfarbe magenta
 turk='\033[36m'         #Schriftfarbe türkis
 orange='\033[93m'	#Schriftfarbe orange
+dlila='\033[0;35m' 	#Schriftfarbe dunkellila
+hlila='\033[1;35m' 	#Schriftfarbe helllila
 
 #Version
 version=v1.2
@@ -167,7 +169,7 @@ cat << !
    metapl3x help function:
 
    Information:
-   --check      : Prüft die Metadaten der Videodatei
+   ${hlila}--check${clear}      : Prüft die Metadaten der Videodatei
 
    Master:
    --elite      : Löscht *txt und Sample,Konvertiert Meta und verschiebt in Mainfolder
