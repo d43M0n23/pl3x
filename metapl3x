@@ -27,12 +27,16 @@ clear='\033[0m'		#alle Attribute zurücksetzen
 red='\033[31m'          #Schriftfarbe rot
 green='\033[32m'        #Schriftfarbe grün
 yell='\033[33m'         #Schriftfarbe gelb
+blue='\033[34m'         #Schriftfarbe blau
+mag='\033[35m'          #Schriftfarbe magenta
+turk='\033[36m'         #Schriftfarbe türkis
+
 
 #Version
-version=v1.1
+version=v1.2
 vdate=21.01.2021
 
-#Variablen
+#File.Format
 owntag=core
 mp4tag=mp4
 mkvtag=mkv
@@ -137,11 +141,18 @@ echo -e "      \/     \/          \/|__|               \/      \/ "
 echo -e "\n"
 echo -e "                                           ${yell}Version: ${version}${clear}"
 echo -e "                                       ${green}Last Stable: ${LATEST_VERSION}${clear}\n"
+echo -e "                                       ${green}Last Stable: ${LATEST_VERSION}${clear}\n"
 echo -e "${yell}Option: ${red}--check, --core, --mp3, --create${clear}"
 echo -e "${yell}Option: ${red}--wav, --rarbg, --mp3 --wav, --txt${clear}"
 echo -e "${yell}Option: ${red}--merge, --siterip, --sample, --help${clear}"
 echo -e "${yell}Option: ${red}--elite, --vr-mobile, --vr180${clear}"
 echo -e "${yell}Option: ${red}--rename, --name, --lowname${clear}\n"
+echo -e "\n"
+echo -e "\n"
+echo -e "${green}d43M0n23${clear}"
+echo -e "${blue}d43M0n23${clear}"
+echo -e "${mag}d43M0n23${clear}"
+echo -e "${turk}d43M0n23${clear}"
 }
 
 #------------------
