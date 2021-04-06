@@ -144,15 +144,16 @@ echo -e "\n"
 echo -e "                                           ${yell}Version: ${version}${clear}"
 echo -e "                                       ${green}Last Stable: ${LATEST_VERSION}${clear}"
 echo -e "                                         c0d3R: d43M0n23\n"
-echo -e "${yell}Information Option: ${red}--check, --core${clear}"
-echo -e "${yell}RARGB Option: ${red}--elite${clear}"
-echo -e "${yell}Folder Option: ${red}--create${clear}"
-echo -e "${yell}Sound Option: ${red} --mp3, --wav, --rarbg, --mp3 --wav, --txt${clear}"
-echo -e "${yell}Edit Option: ${red}--merge, --siterip, --sample${clear}"
-echo -e "${yell}VR Option: ${red}--vr-mobile, --vr180${clear}"
-echo -e "${yell}Name Option: ${red}--rename, --name, --lowname${clear}"
-echo -e "${yell}VLC-List Option: ${red}--vlc${clear}"
-echo -e "${yell}Help Option: ${red}--help${clear}\n"
+echo -e "${yell}Option: ${red}--check, --core${clear}"
+echo -e "${yell}Information: ${red}--check, --core${clear}"
+echo -e "${yell}RARGB: ${red}--elite${clear}"
+echo -e "${yell}Folder: ${red}--create${clear}"
+echo -e "${yell}Sound: ${red} --mp3, --wav, --rarbg, --mp3 --wav, --txt${clear}"
+echo -e "${yell}Edit: ${red}--merge, --siterip, --sample${clear}"
+echo -e "${yell}VR: ${red}--vr-mobile, --vr180${clear}"
+echo -e "${yell}Name: ${red}--rename, --name, --lowname${clear}"
+echo -e "${yell}VLC-List: ${red}--vlc${clear}"
+echo -e "${yell}Help: ${red}--help${clear}\n"
 
 }
 
@@ -169,7 +170,7 @@ cat << !
    metapl3x help function:
 
    Information:
-   ${hlila}--check${clear}      : Prüft die Metadaten der Videodatei
+   --check      : Prüft die Metadaten der Videodatei
 
    Master:
    --elite      : Löscht *txt und Sample,Konvertiert Meta und verschiebt in Mainfolder
