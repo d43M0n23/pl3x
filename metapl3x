@@ -30,7 +30,7 @@ yell='\033[33m'         #Schriftfarbe gelb
 blue='\033[34m'         #Schriftfarbe blau
 mag='\033[35m'          #Schriftfarbe magenta
 turk='\033[36m'         #Schriftfarbe türkis
-
+orange='\033[93m'	#Schriftfarbe orange
 
 #Version
 version=v1.2
@@ -165,29 +165,39 @@ cat << !
 ---
 
    metapl3x help function:
+
    Information:
    --check      : Prüft die Metadaten der Videodatei
+
    Master:
    --elite      : Löscht *txt und Sample,Konvertiert Meta und verschiebt in Mainfolder
+
    Remove:
    --core       : Entfernt in den Filenames das wort _core
    --txt        : Löscht alle *.txt aus den Video Foldern
    --sample     : Löscht alle Sample Files und Ordner
+
    Sound:
    --mp3        : Extrahiert aus MP4/MKV eine mp3 datei
    --wav        : Extrahiert aus MP4/MKV eine wav datei
    --mp3 --wav  : Extrahiert automatisch mp3 und wav aus Videofiles
+
    VR:
    --vr-mobile  : Konvertiert VR 5400 zu VR 2040 Res
    --vr180      : Konvertiert VR360 zu VR180
+
    Folder:
    --create     : Erstellt diverse XXX Folder
+
    Tag Rename:
    --rarbg      : Bearbeitet nur Datein mit RARBG Tag im Titel
+
    Sync-Dev:
    --siterip    : Verschiebt alle Video Files von Sync zu SiteRip:infinity
+
    Dev:
    --merge      : Kombiniert 2 Video Dateien
+
    Help:
    --help       : Diese Anzeige
 !
