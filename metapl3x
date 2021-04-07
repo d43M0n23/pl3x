@@ -18,6 +18,7 @@
 # ls | awk '{ print $9 }'
 # awk '$3 !~ /USA/ '
 # find . -type f -name "*.mkv" -exec bash -c 'FILE="$1"; ffmpeg -i "${FILE}" -vn -c:a libmp3lame -y "${FILE%.mkv}.mp3";' _ '{}' \;    (MKV 2 MP3 inc subfolder)
+# sed -e 's/\./ /g'  (punkte gegen leerzeichen)
 ###################################################################################
 # last modify: 14.01.2021
 # bug or anything: d43M0n23@3xpl0it.com
