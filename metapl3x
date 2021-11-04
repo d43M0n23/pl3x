@@ -13,6 +13,9 @@
 #exiftool IMG_0014.MOV >a.txt
 #ffmpeg -i input_video -f ffmetadata metadata.txt
 #exiftool bumsbuero.16.09.30.ashley.cumstar.de.mp4 | grep Title
+# WMV 2 MP4
+# ffmpeg -i input.wmv -c:v libx264 -crf 23 -c:a aac -q:a 100 output.mp4
+#
 # TODO:
 # --rarbg --merge
 # ls | awk '{ print $9 }'
