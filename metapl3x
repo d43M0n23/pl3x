@@ -154,6 +154,7 @@ echo -e "${yell}Edit: ${red}--merge, --siterip, --sample${clear}"
 echo -e "${yell}VR: ${red}--vr-mobile, --vr180${clear}"
 echo -e "${yell}Name: ${red}--rename, --name, --lowname${clear}"
 echo -e "${yell}VLC-List: ${red}--vlc${clear}"
+echo -e "${yell}Meta Artist: ${red}--meta${clear}"
 echo -e "${yell}Help: ${red}--help${clear}\n"
 
 }
@@ -288,6 +289,46 @@ do
 done
 exit
 fi
+#
+# Modify Meta Artist 4 Plex Filter
+#
+if [ "$1" = "--meta" ]; then
+sh_banner;
+rarbglog=remove_rarbg.log
+if [ -f $rarbglog ]; then
+        rm $rarbglog
+fi
+
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+        working_file=$(exiftool $file | grep Title | grep RARBG | tee -a rarbg_title.log)
+        echo $working_file
+        #! -z "$var"
+        if [ ! -z  "$working_file" ] ; then
+        pfad=$(readlink -f "$file") # kpl. Pfad
+        DirPath=$pfad
+        DirPath="$(dirname $DirPath)"
+        DirPath="$(basename $DirPath)"
+        echo "$DirPath"
+        newtag=${DirPath%.XXX*}
+        newfile=${file%.*}
+        ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
+        echo $file korrigiert.
+        rm $file
+        #remove coreTag in filename
+        topfile=${newfile}.${mp4tag}
+        mv ${newfile}_${owntag}.${mp4tag} ${topfile}
+        echo ${newfile}_${owntag}.${mp4tag} verschoben zu $topfile.
+        fi
+  done
+done
+exit
+fi
+
+
 
 # Name-Ordnername wird zu Name
 if [ "$1" = "--name" ]; then
