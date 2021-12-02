@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 ###################################################################################
@@ -528,7 +529,9 @@ do
 	echo -e "${green}Mainfolder:${yell} ${mainfolder}${clear}"
 	#file metapart
         newtag=${DirPath%.XXX*}
-        newfile=${file%.*}
+        #newfile=${file%.*}
+	#Hier wird gleich richtig Renamed !!
+	newfile=${newfile#*/}
         ffmpeg -i $file -c copy -metadata title="$newtag" -metadata comment="$newtag" -y ${newfile}_${owntag}.${mp4tag}
         echo -e "\n${green}${file} korrigiert.${clear}"
 	#cp $file ${file}.bka # Absicherung
