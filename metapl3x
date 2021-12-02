@@ -194,6 +194,13 @@ cat << !
    --vr-mobile  : Konvertiert VR 5400 zu VR 2040 Res
    --vr180      : Konvertiert VR360 zu VR180
 
+   Name:
+   --elitename  : Setz die kompletten mainfolder neu
+   --rename     : Neuer name wird gesetzt $2
+   --name       : Setzt die namen in daemon-out files korrekt
+   --lowname    : Ordnername = name
+   --filename   : Prüft filename auf Korrektheit
+
    Folder:
    --create     : Erstellt diverse XXX Folder
 
