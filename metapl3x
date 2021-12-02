@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 ###################################################################################
@@ -36,12 +35,12 @@ blue='\033[34m'         #Schriftfarbe blau
 mag='\033[35m'          #Schriftfarbe magenta
 turk='\033[36m'         #Schriftfarbe türkis
 orange='\033[93m'	#Schriftfarbe orange
-dlila='\033[0;35m' 	#Schriftfarbe dunkellila
-hlila='\033[1;35m' 	#Schriftfarbe helllila
+dlila='\033[0;35m'	#Schriftfarbe dunkellila
+hlila='\033[1;35m'	#Schriftfarbe helllila
 
 #Version
 version=v1.2
-vdate=21.01.2021
+vdate=02.11.2021
 
 #File.Format
 owntag=core
@@ -364,7 +363,7 @@ do
 	mv ${DirPath}/${topfile} ${DirPath}/${topfile,,}
 	fi
 
-       	echo ${newfile} unbennant zu $topfile | tee -a rename.log
+	echo ${newfile} unbennant zu $topfile | tee -a rename.log
        fi
   done
 done
