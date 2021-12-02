@@ -388,7 +388,7 @@ do
 #	mainfolder=$("$echo $pfad | awk -F/ '{ print $3 }'")
 
        if [ "$newfile" != "$newtag" ] ; then
-#        mv ${file} ${mainfolder}/${DirPath}/${topfile}
+        mv ${file} ${mainfolder}/${DirPath}/${topfile}
         echo ${newfile} unbennant zu $topfile | tee -a rename.log
 	echo $mainfolder | tee -a rename.log
        fi
