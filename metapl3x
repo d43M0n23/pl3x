@@ -349,6 +349,21 @@ fi
 
 
 # Name-Ordnername wird zu Name
+
+#dir="/from/here/to/there.txt"
+#dir="$(dirname $dir)"   # Returns "/from/here/to"
+#dir="$(basename $dir)"  # Returns just "to"
+
+#basename `dirname "/from/here/to/there.txt"`
+#In order to get any part of your path you could do:
+#echo "/from/here/to/there.txt" | awk -F/ '{ print $2 }'
+#OR
+#echo "/from/here/to/there.txt" | awk -F/ '{ print $3 }'
+#OR
+
+
+
+
 if [ "$1" = "--name" ]; then
 sh_banner;
 rarbglog=name.log
