@@ -212,6 +212,50 @@ cat << !
    exit
 }
 
+
+sh_crap () {
+# rm txt
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .txt$ | grep RARBG | while read file
+  do
+        echo $file gefunden. - REMOVE | tee -a remove_txt.log >> $elitelog
+        rm $file
+  done
+done
+
+# rm nfo
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .nfo$ | while read file
+  do
+        echo $file gefunden. - REMOVE | tee -a remove_txt.log >> $elitelog
+        rm $file
+  done
+done
+
+# rm samples
+for file in *;
+do
+  find "$file" -type d -name "Sample" | while read file
+  do
+        pfad=$(readlink -f "$file")
+        echo $file gefunden. - REMOVE | tee -a remove_txt.log >> $elitelog
+        rm -r $file
+  done
+done
+
+# Mirror.exe
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .exe$ | grep RARBG | while read file
+  do
+        echo $file gefunden. - REMOVE | tee -a remove_txt.log >> $elitelog
+        rm $file
+  done
+done
+}
+
 #------------------
 ## FUNCTION SECTION
 #------------------
@@ -369,6 +413,7 @@ if [ -f $rarbglog ]; then
         rm $rarbglog
 fi
 
+sh_crap;
 
 for file in *;
 do
