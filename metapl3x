@@ -155,7 +155,7 @@ echo -e "${yell}Folder: ${red}--create${clear}"
 echo -e "${yell}Sound: ${red} --mp3, --wav, --rarbg, --mp3 --wav, --txt${clear}"
 echo -e "${yell}Edit: ${red}--merge, --siterip, --sample${clear}"
 echo -e "${yell}VR: ${red}--vr-mobile, --vr180${clear}"
-echo -e "${yell}Name: ${red}--rename, --name, --lowname${clear}"
+echo -e "${yell}Name: ${red}--rename, --name, --lowname, --filename${clear}"
 echo -e "${yell}VLC-List: ${red}--vlc${clear}"
 echo -e "${yell}Meta Artist: ${red}--meta${clear}"
 echo -e "${yell}Help: ${red}--help${clear}\n"
@@ -215,6 +215,21 @@ cat << !
 #------------------
 ## FUNCTION SECTION
 #------------------
+
+# CHECK-Filename
+if [ "$1" = "--filename" ]; then
+sh_banner;
+
+for file in *;
+do
+  find "$file" -type f -not -name ".*" | grep .mp4$ | while read file
+  do
+
+	echo $file | tee -a filename.check.txt
+  done
+done
+exit
+fi
 
 # CHECK-META
 if [ "$1" = "--check" ]; then
