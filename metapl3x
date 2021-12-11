@@ -23,7 +23,7 @@
 # find . -type f -name "*.mkv" -exec bash -c 'FILE="$1"; ffmpeg -i "${FILE}" -vn -c:a libmp3lame -y "${FILE%.mkv}.mp3";' _ '{}' \;    (MKV 2 MP3 inc subfolder)
 # sed -e 's/\./ /g'  (punkte gegen leerzeichen)
 ###################################################################################
-# last modify: 14.01.2021
+# last modify: 11.12.2021
 # bug or anything: d43M0n23@3xpl0it.com
 ###################################################################################
 # Bash sTyl3!
@@ -39,8 +39,8 @@ dlila='\033[0;35m'	#Schriftfarbe dunkellila
 hlila='\033[1;35m'	#Schriftfarbe helllila
 
 #Version
-version=v1.2
-vdate=02.11.2021
+version=v1.3
+vdate=11.12.2021
 
 #File.Format
 owntag=core
