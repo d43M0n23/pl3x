@@ -491,9 +491,9 @@ do
   done
 done
 ### undone backname
-#if [ -d ".$unDone" ]; then
-#        mv .${unDone} $unDone
-#fi
+if [ -d ".$unDone" ]; then
+        mv .${unDone} $unDone
+fi
 exit
 fi
 
